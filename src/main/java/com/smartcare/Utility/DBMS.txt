@@ -1,0 +1,142 @@
+CREATE DATABASE smartcare_db;
+
+USE smartcare_db;
+
+CREATE TABLE Patient (
+	Patient_ID INT PRIMARY KEY AUTO_INCREMENT,
+	Full_Name VARCHAR(100) NOT NULL,
+					  Blood_Group VARCHAR(5),
+					  DOB DATE NOT NULL,
+					  Gender ENUM('Male','Female','Other') NOT NULL,
+					  Address VARCHAR(255) NOT NULL,
+					  Contact_Number VARCHAR(15) NOT NULL,
+					  Emergency_Contact_Information VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE Department (
+	Department_ID INT PRIMARY KEY AUTO_INCREMENT,
+	Department_Name VARCHAR(100) NOT NULL UNIQUE,
+						 Location VARCHAR(100) NOT NULL,
+						 HeadDoctor_ID INT NULL
+);
+
+CREATE TABLE Room (
+	Room_ID INT PRIMARY KEY AUTO_INCREMENT,
+	Room_Number VARCHAR(10) NOT NULL UNIQUE,
+				   Room_Category ENUM('General Ward','Private Room','ICU') NOT NULL,
+				   Room_Charge DECIMAL(10,2) NOT NULL CHECK (Room_Charge >= 0),
+				   Availability ENUM('Available','Occupied') NOT NULL
+);
+
+
+CREATE TABLE Doctor (
+	Doctor_ID INT PRIMARY KEY AUTO_INCREMENT,
+	Department_ID INT NOT NULL,
+	Doctor_Name VARCHAR(100) NOT NULL,
+					 Specialization VARCHAR(100) NOT NULL,
+					 Qualification VARCHAR(100),
+					 Contact_Number VARCHAR(15) NOT NULL,
+					 Consultation_Fee DECIMAL(10,2) NOT NULL ,
+					 
+					 CONSTRAINT FK_Doctor_Department
+					 FOREIGN KEY (Department_ID)
+					 REFERENCES Department(Department_ID)
+);
+
+ALTER TABLE Department
+ADD CONSTRAINT FK_Department_HeadDoctor
+FOREIGN KEY (HeadDoctor_ID)
+REFERENCES Doctor(Doctor_ID);
+
+CREATE TABLE Appointment (
+	Appointment_ID INT PRIMARY KEY AUTO_INCREMENT,
+	Patient_ID INT NOT NULL,
+	Doctor_ID INT NOT NULL,
+	Appointment_Date DATE NOT NULL,
+	Appointment_Time TIME NOT NULL,
+	Appointment_Status ENUM('Scheduled','Completed','Cancelled') NOT NULL,
+						  Consultation_Room VARCHAR(20) NOT NULL,
+						  
+						  CONSTRAINT FK_Appointment_Patient
+						  FOREIGN KEY (Patient_ID)
+						  REFERENCES Patient(Patient_ID),
+						  
+						  CONSTRAINT FK_Appointment_Doctor
+						  FOREIGN KEY (Doctor_ID)
+						  REFERENCES Doctor(Doctor_ID),
+						  
+						  CONSTRAINT UQ_Doctor_Appointment
+						  UNIQUE (Doctor_ID, Appointment_Date, Appointment_Time)
+);
+
+CREATE TABLE Admission (
+	Admission_ID INT PRIMARY KEY AUTO_INCREMENT,
+	Patient_ID INT NOT NULL,
+	Room_ID INT NOT NULL,
+	Admission_Date DATE NOT NULL,
+	Discharge_Date DATE,
+	Bed_Number VARCHAR(10) NOT NULL,
+						Admission_Status ENUM('Admitted','Discharged') NOT NULL,
+						
+						CONSTRAINT FK_Admission_Patient
+						FOREIGN KEY (Patient_ID)
+						REFERENCES Patient(Patient_ID),
+						
+						CONSTRAINT FK_Admission_Room
+						FOREIGN KEY (Room_ID)
+						REFERENCES Room(Room_ID)
+);
+
+CREATE TABLE Treatment (
+	Treatment_ID INT PRIMARY KEY AUTO_INCREMENT,
+	Patient_ID INT NOT NULL,
+	Doctor_ID INT NOT NULL,
+	Diagnosis VARCHAR(255) NOT NULL,
+						Prescription_Details TEXT,
+						Treatment_Notes TEXT,
+						Treatment_Date DATE NOT NULL,
+						
+						CONSTRAINT FK_Treatment_Patient
+						FOREIGN KEY (Patient_ID)
+						REFERENCES Patient(Patient_ID),
+						
+						CONSTRAINT FK_Treatment_Doctor
+						FOREIGN KEY (Doctor_ID)
+						REFERENCES Doctor(Doctor_ID)
+);
+
+
+
+CREATE TABLE Laboratory (
+	Lab_Test_ID INT PRIMARY KEY AUTO_INCREMENT,
+	Patient_ID INT NOT NULL,
+	Doctor_ID INT NOT NULL,
+	Test_Name VARCHAR(100) NOT NULL,
+						 Test_Date DATE NOT NULL,
+						 Test_Result TEXT,
+						 Technician_Name VARCHAR(100) NOT NULL,
+						 Test_Status ENUM('Pending','Completed') NOT NULL,
+						 
+						 CONSTRAINT FK_Laboratory_Patient
+						 FOREIGN KEY (Patient_ID)
+						 REFERENCES Patient(Patient_ID),
+						 
+						 CONSTRAINT FK_Laboratory_Doctor
+						 FOREIGN KEY (Doctor_ID)
+						 REFERENCES Doctor(Doctor_ID)
+);
+
+
+CREATE TABLE Billing (
+	Bill_ID INT PRIMARY KEY AUTO_INCREMENT,
+	Patient_ID INT NOT NULL,
+	Bill_Date DATE NOT NULL,
+	TotalAmount DECIMAL(10,2) NOT NULL CHECK (TotalAmount >= 0),
+					  Payment_Status ENUM('Paid','Unpaid') NOT NULL,
+					  Payment_Method ENUM('Cash','Card','Online') NOT NULL,
+					  
+					  CONSTRAINT FK_Billing_Patient
+					  FOREIGN KEY (Patient_ID)
+					  REFERENCES Patient(Patient_ID)
+);
