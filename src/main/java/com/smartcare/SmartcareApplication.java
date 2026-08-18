@@ -1,5 +1,6 @@
 package com.smartcare;
 
+import com.smartcare.Entity.PatientEntity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,5 +10,6 @@ public class SmartcareApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SmartcareApplication.class, args);
 	}
+
 
 }
