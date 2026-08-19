@@ -1,6 +1,9 @@
 package com.smartcare;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f754e7a7edf83b83edd09afea8dcebaaed467cb0
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,5 +14,8 @@ public class SmartcareApplication {
 		SpringApplication.run(SmartcareApplication.class, args);
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f754e7a7edf83b83edd09afea8dcebaaed467cb0
 }

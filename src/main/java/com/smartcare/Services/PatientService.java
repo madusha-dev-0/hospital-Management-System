@@ -1,5 +1,6 @@
 package com.smartcare.Services;
 
+<<<<<<< HEAD
 import com.smartcare.Entity.PatientEntity;
 import com.smartcare.Repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,4 +26,10 @@ public class PatientService {
     }
 
 
+=======
+import org.springframework.stereotype.Service;
+
+@Service
+public class PatientService {
+>>>>>>> f754e7a7edf83b83edd09afea8dcebaaed467cb0
 }
