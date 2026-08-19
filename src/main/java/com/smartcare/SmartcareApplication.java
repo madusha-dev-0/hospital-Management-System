@@ -1,6 +1,6 @@
 package com.smartcare;
 
-import com.smartcare.Entity.PatientEntity;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

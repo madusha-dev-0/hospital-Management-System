@@ -1,9 +1,7 @@
-package com.smartcare.Controller;
+package com.smartcare.Services;
 
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class DepartmentController {
+public class DepartmentService {
 
     public String addDepartment() {
         return null;
@@ -24,4 +22,5 @@ public class DepartmentController {
     public String getAllDepartment() {
         return null;
     }
+
 }
