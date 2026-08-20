@@ -10,6 +10,7 @@ import java.sql.Time;
 public class AppointmentEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int appointmentId;
 
     @ManyToOne
@@ -22,6 +23,8 @@ public class AppointmentEntity {
 
     private Date AppointmentDate;
     private Time AppointmentTime;
+
+    @Column(name = "Appointment_Status")
     private String AppointmentStatus;
     private String ConsultationRoom;
 
