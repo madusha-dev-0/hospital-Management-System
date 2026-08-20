@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class PatientEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Patient_ID")
     private int Patient_ID;
     private String Full_Name;
     private String Blood_Group;

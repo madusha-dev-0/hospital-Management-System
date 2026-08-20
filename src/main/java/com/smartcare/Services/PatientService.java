@@ -16,13 +16,23 @@ public class PatientService {
 
 
     public List<PatientEntity> getAllPatients() {
+
         return patientRepository.findAll();
     }
 
 
     public PatientEntity addPatient(PatientEntity patient) {
+
         return patientRepository.save(patient);
     }
+
+    public void deletePatientByID(int id){
+        patientRepository.deleteById(id);
+
+    }
+
+
+
 
 
 }
