@@ -51,8 +51,8 @@ public class AppointmentService {
         existingAppointment.setPatient(
                 appointment.getPatient());
 
-//        existingAppointment.set(
-//                appointment.getDoctor());
+        existingAppointment.setDoctor(
+                appointment.getDoctor());
 
         return appointmentRepository.save(existingAppointment);
     }

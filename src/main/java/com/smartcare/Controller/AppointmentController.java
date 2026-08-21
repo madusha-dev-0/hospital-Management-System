@@ -38,7 +38,7 @@ public class AppointmentController {
         );
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<AppointmentEntity> updateAppointment(
             @PathVariable Integer id,
             @RequestBody AppointmentEntity appointment) {
@@ -48,7 +48,7 @@ public class AppointmentController {
         );
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteAppointment(
             @PathVariable Integer id) {
 

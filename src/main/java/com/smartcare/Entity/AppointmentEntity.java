@@ -17,9 +17,9 @@ public class AppointmentEntity {
     @JoinColumn(name = "Patient_ID", referencedColumnName = "Patient_ID")
     private PatientEntity patient;
 
-//    @ManyToOne
-//    @JoinColumn(name = "DoctorID", referencedColumnName = "Doctor_ID")
-//    private DoctorEntity doctor;
+    @ManyToOne
+    @JoinColumn(name = "Doctor_ID", referencedColumnName = "doctorId")
+    private DoctorEntity doctor;
 
     private Date AppointmentDate;
     private Time AppointmentTime;
@@ -78,5 +78,13 @@ public class AppointmentEntity {
 
     public void setConsultationRoom(String consultationRoom) {
         ConsultationRoom = consultationRoom;
+    }
+
+    public DoctorEntity getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(DoctorEntity doctor) {
+        this.doctor = doctor;
     }
 }
