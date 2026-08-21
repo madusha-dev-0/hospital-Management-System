@@ -16,9 +16,9 @@ public class AdmissionEntity {
     @JoinColumn(name = "Patient_ID", referencedColumnName = "Patient_ID")
     private PatientEntity patient;
 
-//    @ManyToOne
-//    @JoinColumn(name ="RoomId", referencedColumnName = "Room_ID")
-//    private RoomEntity room;
+    @ManyToOne
+    @JoinColumn(name ="RoomId", referencedColumnName = "Room_ID")
+    private RoomEntity room;
 
     private Date admissionDate;
     private Date DischargeDate;
