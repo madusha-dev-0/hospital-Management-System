@@ -1,75 +1,111 @@
 package com.smartcare.Entity;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "doctor")
+@Table(name = "Doctor")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class DoctorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer doctorId;
+    @Column(name = "Doctor_ID")
+    @JsonProperty("Doctor_ID")
+    private Integer Doctor_ID;
 
-//    @ManyToOne
-//    @JoinColumn(name = "departmentId", referencedColumnName = "Department_ID");
-//    private
+    @Column(name = "Doctor_Name", nullable = false, length = 100)
+    @JsonProperty("Doctor_Name")
+    private String Doctor_Name;
 
-    private String doctorName;
-    private String specialization;
-    private String qualification;
-    private String contactNumber;
-    private BigDecimal consultationFee;
+    @Column(name = "Specialization", nullable = false, length = 100)
+    @JsonProperty("Specialization")
+    private String Specialization;
 
-    public DoctorEntity(){}
+    @Column(name = "Qualification", length = 100)
+    @JsonProperty("Qualification")
+    private String Qualification;
 
+    @Column(name = "Contact_Number", nullable = false, length = 15)
+    @JsonProperty("Contact_Number")
+    private String Contact_Number;
 
-    public Integer getDoctorId() {
-        return doctorId;
+    @Column(name = "Consultation_Fee", nullable = false, precision = 10, scale = 2)
+    @JsonProperty("Consultation_Fee")
+    private BigDecimal Consultation_Fee;
+
+    @ManyToOne
+    @JoinColumn(name = "Department_ID", nullable = false)
+    @JsonProperty("department")
+    private DepartmentEntity department;
+
+    public DoctorEntity() {}
+
+    public DoctorEntity(Integer Doctor_ID, String Doctor_Name, String Specialization, String Qualification, String Contact_Number, BigDecimal Consultation_Fee, DepartmentEntity department) {
+        this.Doctor_ID = Doctor_ID;
+        this.Doctor_Name = Doctor_Name;
+        this.Specialization = Specialization;
+        this.Qualification = Qualification;
+        this.Contact_Number = Contact_Number;
+        this.Consultation_Fee = Consultation_Fee;
+        this.department = department;
     }
 
-    public void setDoctorId(Integer doctorId) {
-        this.doctorId = doctorId;
+    public Integer getDoctor_ID() {
+        return Doctor_ID;
     }
 
-    public String getDoctorName() {
-        return doctorName;
+    public void setDoctor_ID(Integer doctor_ID) {
+        Doctor_ID = doctor_ID;
     }
 
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
+    public String getDoctor_Name() {
+        return Doctor_Name;
+    }
+
+    public void setDoctor_Name(String doctor_Name) {
+        Doctor_Name = doctor_Name;
     }
 
     public String getSpecialization() {
-        return specialization;
+        return Specialization;
     }
 
     public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+        Specialization = specialization;
     }
 
     public String getQualification() {
-        return qualification;
+        return Qualification;
     }
 
     public void setQualification(String qualification) {
-        this.qualification = qualification;
+        Qualification = qualification;
     }
 
-    public String getContactNumber() {
-        return contactNumber;
+    public String getContact_Number() {
+        return Contact_Number;
     }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setContact_Number(String contact_Number) {
+        Contact_Number = contact_Number;
     }
 
-    public BigDecimal getConsultationFee() {
-        return consultationFee;
+    public BigDecimal getConsultation_Fee() {
+        return Consultation_Fee;
     }
 
-    public void setConsultationFee(BigDecimal consultationFee) {
-        this.consultationFee = consultationFee;
+    public void setConsultation_Fee(BigDecimal consultation_Fee) {
+        Consultation_Fee = consultation_Fee;
+    }
+
+    public DepartmentEntity getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(DepartmentEntity department) {
+        this.department = department;
     }
 }

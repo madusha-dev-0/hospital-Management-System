@@ -1,54 +1,65 @@
 package com.smartcare.Entity;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "department")
+@Table(name = "Department")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class DepartmentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer departmentId;
+    @Column(name = "Department_ID")
+    @JsonProperty("Department_ID")
+    private Integer Department_ID;
 
-    private String departmentName;
-    private String location;
+    @Column(name = "Department_Name", nullable = false, unique = true, length = 100)
+    @JsonProperty("Department_Name")
+    private String Department_Name;
 
-    @ManyToOne
-    @JoinColumn(name = "doctorId", referencedColumnName = "HeadDoctor_ID")
-    private DoctorEntity doctor;
+    @Column(name = "Location", nullable = false, length = 100)
+    @JsonProperty("Location")
+    private String Location;
 
-    public DepartmentEntity(){}
+    @OneToMany(mappedBy = "department")
+    private List<DoctorEntity> doctor;
 
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public DepartmentEntity() {}
+
+    public Integer getDepartment_ID() {
+        return Department_ID;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment_ID(Integer department_ID) {
+        Department_ID = department_ID;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
+    public String getDepartment_Name() {
+        return Department_Name;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public void setDepartment_Name(String department_Name) {
+        Department_Name = department_Name;
     }
 
     public String getLocation() {
-        return location;
+        return Location;
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        Location = location;
     }
 
-    public DoctorEntity getDoctor() {
+    public List<DoctorEntity> getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(DoctorEntity doctor) {
+    public void setDoctor(List<DoctorEntity> doctor) {
         this.doctor = doctor;
     }
 }
