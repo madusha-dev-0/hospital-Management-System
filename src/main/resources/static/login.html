@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCare - Login</title>
+
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <!-- LEFT SIDE -->
+    <div class="welcome-section">
+
+        <div class="logo">
+            <span>Smart</span>Care
+        </div>
+
+        <div class="welcome-content">
+
+            <h1>Welcome Back!</h1>
+
+            <p>
+                Login to SmartCare Hospital Management System
+                and manage your hospital easily.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="form-section">
+
+        <div class="form-container">
+
+            <h2>Login</h2>
+
+            <p class="subtitle">
+                Login to your SmartCare account
+            </p>
+
+            <form id="login-form">
+
+                <div class="input-group">
+
+                    <label for="userName">Username</label>
+
+                    <input
+                            type="text"
+                            id="userName"
+                            placeholder="Enter your username"
+                            autocomplete="username"
+                    >
+
+                    <small class="error" id="username-error"></small>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="password">Password</label>
+
+                    <div class="password-container">
+
+                        <input
+                                type="password"
+                                id="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                        >
+
+                        <button
+                                type="button"
+                                id="toggle-password"
+                                class="show-password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                    <small class="error" id="password-error"></small>
+
+                </div>
+
+
+                <button
+                        type="submit"
+                        id="login-button"
+                        class="main-button"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <div id="popup-message"></div>
+
+
+            <p class="switch-page">
+
+                Don't have an account?
+
+                <a href="singup.html">
+                    Sign Up
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/login.js"></script>
+
+</body>
+
+</html>

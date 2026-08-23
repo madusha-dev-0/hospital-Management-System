@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Care - Departments</title>
+
+    <link rel="stylesheet" href="css/department.css">
+</head>
+
+<body>
+
+<nav>
+
+    <div id="company-logo">
+        <span id="Smart">Smart </span>Care
+    </div>
+
+    <input type="text"
+           placeholder="Search..."
+           id="search-bar">
+
+    <div id="nav-icons">
+
+        <div class="notifi-container">
+            <img src="/media/bell.png"
+                 alt="alert"
+                 class="icons">
+
+            <span class="notifi">2</span>
+        </div>
+
+        <div class="notifi-container">
+            <img src="/media/email.png"
+                 alt="mail"
+                 class="icons">
+
+            <span class="notifi">2</span>
+        </div>
+
+        <img src="/media/user.png"
+             alt="user"
+             id="user-login">
+
+    </div>
+
+</nav>
+
+
+<main>
+
+    <!-- SIDEBAR -->
+
+    <div id="side-bar">
+
+        <div class="side-menu">
+
+            <div>▦ <span>Dashboard</span></div>
+
+            <div>▣ <span>Appointments</span></div>
+
+            <div>♙ <span>Patients</span></div>
+
+            <div>♙ <span>Doctors</span></div>
+
+            <div>♧ <span>Staff</span></div>
+
+            <div>♧ <span>Treatment</span></div>
+
+            <div>▱ <span>Rooms</span></div>
+
+            <div>▣ <span>Admissions</span></div>
+
+            <div>♨ <span>Laboratory</span></div>
+
+            <div>▤ <span>Billing &amp; Payment</span></div>
+
+            <div class="active">
+                ♜ <span>Departments</span>
+            </div>
+
+            <div>▧ <span>Reports</span></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEADER -->
+
+    <div id="header-bar">
+
+        <div class="header-container">
+
+            <div id="title-container">
+
+                <span id="title-bar"></span>
+
+                <span class="title">
+                    Departments
+                </span>
+
+            </div>
+
+            <button class="add-button"
+                    id="addDepartmentBtn">
+
+                + Add department
+
+            </button>
+
+        </div>
+
+
+        <div class="search-container">
+
+            <input type="text"
+                   placeholder="Search Department ID or Name..."
+                   id="departmentSearch">
+
+            <select id="statusFilter"
+                    class="options">
+
+                <option value="">
+                    Status
+                </option>
+
+                <option value="Active">
+                    Active
+                </option>
+
+                <option value="Inactive">
+                    Inactive
+                </option>
+
+            </select>
+
+
+            <button id="refreshBtn"
+                    class="refresh-button">
+
+                Refresh
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLE -->
+
+    <div id="table-view">
+
+        <div id="message"></div>
+
+        <table id="department-table">
+
+            <thead>
+
+            <tr>
+
+                <th>
+                    Department ID
+                </th>
+
+                <th>
+                    Department Name
+                </th>
+
+                <th>
+                    Description
+                </th>
+
+                <th>
+                    Head Doctor ID
+                </th>
+
+                <th>
+                    Status
+                </th>
+
+                <th>
+                    Actions
+                </th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="department-table-body">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+<!-- DEPARTMENT MODAL -->
+
+<div class="modal hidden"
+     id="departmentModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Department
+            </h2>
+
+            <button type="button"
+                    class="close-button"
+                    id="closeModal">
+
+                &times;
+
+            </button>
+
+        </div>
+
+
+        <form id="departmentForm">
+
+            <input type="hidden"
+                   id="departmentId">
+
+
+            <label>
+                Department Name
+            </label>
+
+            <input type="text"
+                   id="departmentName"
+                   placeholder="e.g. Cardiology"
+                   required>
+
+
+            <label>
+                Description
+            </label>
+
+            <textarea id="description"
+                      placeholder="Enter department description"
+                      required></textarea>
+
+
+            <label>
+                Head Doctor ID
+            </label>
+
+            <input type="number"
+                   id="headDoctorId"
+                   min="1"
+                   placeholder="Doctor ID">
+
+
+            <label>
+                Status
+            </label>
+
+            <select id="departmentStatus"
+                    required>
+
+                <option value="Active">
+                    Active
+                </option>
+
+                <option value="Inactive">
+                    Inactive
+                </option>
+
+            </select>
+
+
+            <div class="modal-actions">
+
+                <button type="button"
+                        class="cancel-button"
+                        id="cancelModal">
+
+                    Cancel
+
+                </button>
+
+
+                <button type="submit"
+                        class="save-button">
+
+                    Save Department
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- VIEW MODAL -->
+
+<div class="modal hidden"
+     id="viewModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>
+                Department Details
+            </h2>
+
+            <button type="button"
+                    class="close-button"
+                    id="closeViewModal">
+
+                &times;
+
+            </button>
+
+        </div>
+
+
+        <div class="details">
+
+            <div class="detail-row">
+                <strong>Department ID:</strong>
+                <span id="viewDepartmentId"></span>
+            </div>
+
+            <div class="detail-row">
+                <strong>Department Name:</strong>
+                <span id="viewDepartmentName"></span>
+            </div>
+
+            <div class="detail-row">
+                <strong>Description:</strong>
+                <span id="viewDescription"></span>
+            </div>
+
+            <div class="detail-row">
+                <strong>Head Doctor ID:</strong>
+                <span id="viewHeadDoctorId"></span>
+            </div>
+
+            <div class="detail-row">
+                <strong>Status:</strong>
+                <span id="viewStatus"></span>
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button type="button"
+                    class="cancel-button"
+                    id="closeViewButton">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="js/department.js"></script>
+
+</body>
+
+</html>

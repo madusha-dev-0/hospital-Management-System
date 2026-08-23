@@ -1,105 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+
 * {
     box-sizing: border-box;
 }
+
 
 body {
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
+
     background-color: #D2C7C7;
+
     color: #222;
 }
 
-/* ================= DELETE MESSAGE POPUP ================= */
 
-.message-modal {
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.45);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 2000;
-}
-
-.message-modal.hidden {
-    display: none;
-}
-
-.message-modal-box {
-    width: 500px;
-    max-width: 90%;
-
-    background: white;
-
-    border-radius: 20px;
-
-    padding: 25px;
-
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-}
-
-.message-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 20px;
-}
-
-.message-modal-header h2 {
-    margin: 0;
-
-    color: #E74C3C;
-
-    font-size: 22px;
-}
-
-.message-close {
-    border: none;
-    background: transparent;
-
-    font-size: 30px;
-
-    cursor: pointer;
-
-    color: #555;
-}
-
-.delete-message-content {
-    background: #fff5f5;
-
-    border-left: 4px solid #E74C3C;
-
-    border-radius: 10px;
-
-    padding: 15px;
-
-    color: #444;
-
-    line-height: 1.8;
-
-    white-space: pre-line;
-}
-
-.message-modal-actions {
-    display: flex;
-    justify-content: flex-end;
-
-    margin-top: 20px;
-}
-
-
-/* ================= NAVIGATION ================= */
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
     width: 95%;
     height: 75px;
+
     margin: auto;
 
     display: flex;
@@ -107,16 +32,19 @@ nav {
     align-items: center;
 }
 
+
 #company-logo {
     font-size: 50px;
     font-weight: 600;
 }
 
+
 #Smart {
     color: #46BCE0;
 }
 
-#topSearchBar {
+
+#search-bar {
     width: 400px;
     height: 35px;
 
@@ -128,21 +56,25 @@ nav {
     outline: none;
 }
 
+
 #nav-icons {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
+
 .icons {
     width: 30px;
     height: 30px;
 }
 
+
 .notifi-container {
     display: flex;
     align-items: flex-start;
 }
+
 
 .notifi {
     width: 20px;
@@ -151,6 +83,7 @@ nav {
     border-radius: 20px;
 
     color: white;
+
     font-size: 12px;
 
     text-align: center;
@@ -160,22 +93,26 @@ nav {
     margin-left: -8px;
 }
 
+
 #user-login {
     width: 50px;
 }
 
 
-/* ================= MAIN ================= */
+/* =========================
+   MAIN
+========================= */
 
 main {
     width: 95%;
+
     margin: 30px auto;
 
     display: grid;
 
     gap: 20px;
 
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 400px 1fr;
 
     grid-template-rows:
         175px
@@ -187,90 +124,64 @@ main {
 }
 
 
+/* =========================
+   SIDEBAR
+========================= */
 
-
-/* ================= SIDEBAR ================= */
-
-.sidebar {
+#side-bar {
     grid-area: side-bar;
-
-    background-color: white;
 
     border-radius: 20px;
 
-    padding: 25px 15px;
+    background-color: white;
 
+    padding: 25px 15px;
+}
+
+
+.side-menu {
     display: flex;
+
     flex-direction: column;
 
-    min-height: 100%;
+    gap: 5px;
 }
 
-.sidebar-title {
-    font-size: 28px;
-    font-weight: 600;
 
-    padding: 0 18px 25px;
-}
-
-.menu-item {
+.side-menu div {
     height: 48px;
 
     display: flex;
+
     align-items: center;
 
     gap: 15px;
 
     padding: 0 18px;
 
-    margin-bottom: 5px;
-
     border-radius: 25px;
 
-    font-size: 16px;
-
-    color: #222;
-
-    text-decoration: none;
+    font-size: 18px;
 
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
-.menu-item:hover {
-    background-color: #e9f9fd;
+
+.side-menu div:hover {
+    background-color: #eefaff;
 }
 
-.menu-item.active {
+
+.side-menu div.active {
     background-color: #46BCE0;
-
-    color: white;
-}
-
-.menu-item span {
-    width: 28px;
-    height: 28px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-}
-
-.menu-item img {
-    width: 24px;
-    height: 24px;
-
-    object-fit: contain;
-}
-
-.sidebar-bottom {
-    margin-top: auto;
-
-    padding-top: 20px;
 }
 
 
-/* ================= HEADER ================= */
+/* =========================
+   HEADER
+========================= */
 
 #header-bar {
     grid-area: header-bar;
@@ -286,6 +197,7 @@ main {
     background-color: white;
 }
 
+
 .header-container {
     margin: 20px;
 
@@ -296,6 +208,7 @@ main {
     align-items: center;
 }
 
+
 #title-container {
     display: flex;
 
@@ -303,6 +216,7 @@ main {
 
     gap: 10px;
 }
+
 
 #title-bar {
     width: 10px;
@@ -313,14 +227,16 @@ main {
     border-radius: 20px;
 }
 
+
 .title {
     font-size: 40px;
 
     font-weight: 600;
 }
 
+
 .add-button {
-    min-width: 170px;
+    min-width: 210px;
 
     height: 42px;
 
@@ -337,25 +253,30 @@ main {
     cursor: pointer;
 }
 
-.add-button:hover {
+
+.add-button:hover,
+.save-button:hover {
     background-color: #2fa9ce;
 }
 
 
-/* ================= SEARCH ================= */
+/* =========================
+   SEARCH
+========================= */
 
 .search-container {
     margin: 20px;
 
     display: flex;
 
-    gap: 15px;
+    gap: 25px;
 
     align-items: center;
 }
 
-#patientSearch {
-    width: 300px;
+
+#departmentSearch {
+    width: 350px;
 
     height: 35px;
 
@@ -370,10 +291,11 @@ main {
     outline: none;
 }
 
+
 .options {
     height: 35px;
 
-    min-width: 130px;
+    min-width: 145px;
 
     border: none;
 
@@ -381,32 +303,13 @@ main {
 
     padding: 0 15px;
 
-    font-size: 14px;
+    font-size: 15px;
 
     cursor: pointer;
 
     background-color: #f2f2f2;
 }
 
-.search-button {
-    height: 35px;
-
-    padding: 0 20px;
-
-    border: none;
-
-    border-radius: 20px;
-
-    background-color: #46BCE0;
-
-    color: white;
-
-    cursor: pointer;
-}
-
-.search-button:hover {
-    background-color: #2fa9ce;
-}
 
 .refresh-button {
     height: 35px;
@@ -423,67 +326,43 @@ main {
 }
 
 
-/* ================= TABLE VIEW ================= */
+.refresh-button:hover {
+    background-color: #ddd;
+}
+
+
+/* =========================
+   TABLE
+========================= */
 
 #table-view {
     grid-area: table-view;
 
     border-radius: 20px;
+
     background-color: white;
 
-    padding: 20px;
+    padding: 25px;
 
-    /* IMPORTANT */
-    min-height: 0;
-    height: 100%;
-
-    overflow: hidden;
-
-    display: flex;
-    flex-direction: column;
+    overflow-x: auto;
 }
 
-/* ================= TABLE SCROLL ================= */
 
-#patient-table {
+#department-table {
     width: 100%;
 
     border-collapse: collapse;
 
-    font-size: 14px;
-
-    /* IMPORTANT */
-    table-layout: fixed;
+    font-size: 15px;
 }
 
-/* Make table header stay at top */
-#patient-table thead {
+
+#department-table thead {
     background-color: #f5f8fa;
 }
 
-/* Scroll only table body */
-#patient-table tbody {
-    display: block;
 
-    max-height: 500px;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    width: 100%;
-}
-
-/* Keep header and body columns aligned */
-#patient-table thead,
-#patient-table tbody tr {
-    display: table;
-
-    width: 100%;
-
-    table-layout: fixed;
-}
-
-#patient-table th {
+#department-table th {
     text-align: left;
 
     padding: 15px;
@@ -495,21 +374,24 @@ main {
     border-bottom: 2px solid #eeeeee;
 }
 
-#patient-table td {
+
+#department-table td {
     padding: 15px;
 
     border-bottom: 1px solid #eeeeee;
 
     color: #333;
-
-    word-wrap: break-word;
 }
 
-#patient-table tbody tr:hover {
+
+#department-table tbody tr:hover {
     background-color: #f8fcfd;
 }
 
-/* ================= ACTION BUTTONS ================= */
+
+/* =========================
+   BUTTONS
+========================= */
 
 .edit-button,
 .delete-button,
@@ -525,15 +407,18 @@ main {
     font-size: 12px;
 }
 
+
 .edit-button {
     background-color: #46BCE0;
 
     color: white;
 }
 
+
 .view-button {
     background-color: #eee;
 }
+
 
 .delete-button {
     background-color: #E74C3C;
@@ -543,6 +428,7 @@ main {
     margin-left: 5px;
 }
 
+
 .edit-button:hover,
 .delete-button:hover,
 .view-button:hover {
@@ -550,23 +436,34 @@ main {
 }
 
 
-/* ================= MESSAGE ================= */
+/* =========================
+   STATUS
+========================= */
 
-#message {
-    min-height: 25px;
+.status {
+    display: inline-block;
 
-    margin-bottom: 5px;
+    padding: 5px 12px;
 
-    font-size: 14px;
+    border-radius: 15px;
+
+    font-size: 12px;
 }
 
-.message-success {
-    color: #198754;
+
+.status-Active {
+    background: #dff5e5;
+
+    color: #208443;
 }
 
-.message-error {
-    color: #d63031;
+
+.status-Inactive {
+    background: #fde2df;
+
+    color: #c0392b;
 }
+
 
 .empty-message {
     text-align: center;
@@ -577,7 +474,37 @@ main {
 }
 
 
-/* ================= MODAL ================= */
+/* =========================
+   MESSAGE
+========================= */
+
+#message {
+    min-height: 25px;
+
+    margin-bottom: 5px;
+
+    font-size: 14px;
+}
+
+
+.message-success {
+    color: #198754;
+}
+
+
+.message-error {
+    color: #d63031;
+}
+
+
+.message-loading {
+    color: #1686a5;
+}
+
+
+/* =========================
+   MODAL
+========================= */
 
 .modal {
     position: fixed;
@@ -595,9 +522,11 @@ main {
     z-index: 1000;
 }
 
+
 .hidden {
     display: none !important;
 }
+
 
 .modal-box {
     width: 500px;
@@ -615,9 +544,9 @@ main {
     padding: 25px;
 
     box-shadow:
-            0 15px 40px
-            rgba(0, 0, 0, 0.2);
+            0 15px 40px rgba(0, 0, 0, 0.2);
 }
+
 
 .modal-header {
     display: flex;
@@ -629,9 +558,11 @@ main {
     margin-bottom: 20px;
 }
 
+
 .modal-header h2 {
     margin: 0;
 }
+
 
 .close-button {
     border: none;
@@ -644,15 +575,18 @@ main {
 }
 
 
-/* ================= FORM ================= */
+/* =========================
+   FORM
+========================= */
 
-#patientForm {
+#departmentForm {
     display: flex;
 
     flex-direction: column;
 }
 
-#patientForm label {
+
+#departmentForm label {
     font-size: 14px;
 
     font-weight: 500;
@@ -660,38 +594,47 @@ main {
     margin: 10px 0 5px;
 }
 
-#patientForm input,
-#patientForm select,
-#patientForm textarea {
-    height: 42px;
+
+#departmentForm input,
+#departmentForm select,
+#departmentForm textarea {
+    width: 100%;
 
     border: 1px solid #ddd;
 
     border-radius: 10px;
 
-    padding: 0 12px;
+    padding: 10px 12px;
 
     font-family: inherit;
 
     outline: none;
 }
 
-#patientForm textarea {
-    height: 80px;
 
-    padding-top: 10px;
+#departmentForm input,
+#departmentForm select {
+    height: 42px;
+}
+
+
+#departmentForm textarea {
+    height: 90px;
 
     resize: vertical;
 }
 
-#patientForm input:focus,
-#patientForm select:focus,
-#patientForm textarea:focus {
+
+#departmentForm input:focus,
+#departmentForm select:focus,
+#departmentForm textarea:focus {
     border-color: #46BCE0;
 }
 
 
-/* ================= MODAL BUTTONS ================= */
+/* =========================
+   MODAL ACTIONS
+========================= */
 
 .modal-actions {
     display: flex;
@@ -702,6 +645,7 @@ main {
 
     margin-top: 25px;
 }
+
 
 .cancel-button,
 .save-button {
@@ -716,61 +660,68 @@ main {
     font-family: inherit;
 }
 
+
 .cancel-button {
     background: #eee;
 }
 
+
 .save-button {
     background: #46BCE0;
-
-    color: white;
-}
-
-.save-button:hover {
-    background: #2fa9ce;
 }
 
 
-/* ================= VIEW PATIENT ================= */
+/* =========================
+   DETAILS
+========================= */
 
-.view-box {
-    width: 550px;
-}
-
-.patient-details {
+.details {
     display: flex;
 
     flex-direction: column;
 
-    gap: 5px;
+    gap: 15px;
 }
 
-.patient-details p {
+
+.detail-row {
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 12px;
+
     background: #f7f9fa;
 
-    padding: 12px 15px;
-
     border-radius: 10px;
-
-    margin: 3px 0;
-}
-
-.patient-details strong {
-    display: inline-block;
-
-    width: 190px;
 }
 
 
-/* ================= RESPONSIVE ================= */
+.detail-row strong {
+    font-size: 13px;
 
-@media (max-width: 1200px) {
+    color: #666;
+
+    margin-bottom: 4px;
+}
+
+
+.detail-row span {
+    font-size: 15px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
 
     #company-logo {
         font-size: 38px;
     }
 
-    #topSearchBar {
+    #search-bar {
         width: 260px;
     }
 
@@ -787,14 +738,19 @@ main {
     }
 }
 
-@media (max-width: 800px) {
+
+@media (max-width: 750px) {
 
     nav {
-        width: 95%;
+        flex-wrap: wrap;
+
+        height: auto;
+
+        padding-top: 15px;
     }
 
-    #topSearchBar {
-        display: none;
+    #search-bar {
+        width: 250px;
     }
 
     main {
@@ -810,19 +766,28 @@ main {
     .side-menu {
         display: grid;
 
-        grid-template-columns:
-                repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    #header-bar {
-        min-height: 180px;
+    .header-container {
+        flex-direction: column;
+
+        gap: 20px;
+
+        align-items: flex-start;
     }
 
     .search-container {
-        flex-wrap: wrap;
+        flex-direction: column;
+
+        align-items: stretch;
     }
 
-    #patientSearch {
+    #departmentSearch {
+        width: 100%;
+    }
+
+    .options {
         width: 100%;
     }
 

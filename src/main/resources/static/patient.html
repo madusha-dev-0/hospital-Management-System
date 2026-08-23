@@ -1,109 +1,582 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Smart Care - Patients</title>
+
     <link rel="stylesheet" href="css/patient.css">
 </head>
 
 <body>
 
-    <nav>
-        <div id="company-logo">
-            <span id="Smart">Smart </span>Care
+<!-- DELETE ERROR POPUP -->
+<div id="deleteMessageModal" class="message-modal hidden">
+
+    <div class="message-modal-box">
+
+        <div class="message-modal-header">
+            <h2>Cannot Delete Patient</h2>
+
+            <button
+                    type="button"
+                    id="closeDeleteMessage"
+                    class="message-close">
+                &times;
+            </button>
         </div>
-        <input type="text" placeholder="Search..." id="search-bar">
 
-        <div id="nav-icons">
+        <div id="deleteMessageContent" class="delete-message-content">
+        </div>
 
-            <div class="notifi-container">
-                <img src="/media/bell.png" alt="alert" class="icons">
-                <span class="notifi">2</span>
+        <div class="message-modal-actions">
+            <button
+                    type="button"
+                    id="deleteMessageOk"
+                    class="save-button">
+                OK
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <div id="company-logo">
+        <span id="Smart">Smart </span>Care
+    </div>
+
+    <input
+            type="text"
+            placeholder="Search patients..."
+            id="topSearchBar"
+    >
+
+    <div id="nav-icons">
+
+        <div class="notifi-container">
+            <img src="/media/bell.png" alt="alert" class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <div class="notifi-container">
+            <img src="/media/email.png" alt="mail" class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <img
+                src="/media/user.png"
+                alt="user"
+                id="user-login"
+        >
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <!-- ================= SIDE BAR ================= -->
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            SmartCare
+        </div>
+
+        <!-- Dashboard -->
+        <a href="dassboard.html" class="menu-item">
+        <span>
+            <img src="media/menu.png" alt="Dashboard">
+        </span>
+            Dashboard
+        </a>
+
+        <!-- Appointments -->
+        <a href="appointment.html" class="menu-item">
+        <span>
+            <img src="media/online-booking.png" alt="Appointments">
+        </span>
+            Appointments
+        </a>
+
+        <!-- Patients -->
+        <a href="patient.html" class="menu-item active">
+        <span>
+            <img src="media/patient.png" alt="Patients">
+        </span>
+            Patients
+        </a>
+
+        <!-- Doctors -->
+        <a href="doctor.html" class="menu-item">
+        <span>
+            <img src="media/doctor.png" alt="Doctors">
+        </span>
+            Doctors
+        </a>
+
+        <!-- Treatment -->
+        <a href="treatment.html" class="menu-item">
+        <span>
+            <img src="media/stethoscope.png" alt="Treatment">
+        </span>
+            Treatment
+        </a>
+
+        <!-- Rooms -->
+        <a href="room.html" class="menu-item">
+        <span>
+            <img src="media/inpatient.png" alt="Rooms">
+        </span>
+            Rooms
+        </a>
+
+        <!-- Admissions -->
+        <a href="addmission.html" class="menu-item">
+        <span>
+            <img src="media/hospital.png" alt="Admissions">
+        </span>
+            Admissions
+        </a>
+
+        <!-- Laboratory -->
+        <a href="laboratory.html" class="menu-item">
+        <span>
+            <img src="media/microscope.png" alt="Laboratory">
+        </span>
+            Laboratory
+        </a>
+
+        <!-- Billing -->
+        <a href="billing.html" class="menu-item">
+        <span>
+            <img src="media/transaction-history.png" alt="Billing">
+        </span>
+            Billing & Payment
+        </a>
+
+        <!-- Departments -->
+        <a href="department.html" class="menu-item">
+        <span>
+            <img src="media/institution.png" alt="Departments">
+        </span>
+            Departments
+        </a>
+
+        <!-- Reports -->
+        <a href="reports.html" class="menu-item">
+        <span>
+            <img src="media/medical-report.png" alt="Reports">
+        </span>
+            Reports
+        </a>
+
+
+        <!-- Bottom Menu -->
+        <div class="sidebar-bottom">
+
+            <a href="#" class="menu-item">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <a href="#" class="menu-item logout">
+                <span>↪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+    </div>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <div id="header-bar">
+
+        <div class="header-container">
+
+            <div id="title-container">
+
+                <span id="title-bar"></span>
+
+                <span class="title">
+                    Patients
+                </span>
+
             </div>
 
-            <div class="notifi-container">
-                <img src="/media/email.png" alt="mail" class="icons">
-                <span class="notifi">2</span>
+            <button
+                    class="add-button"
+                    id="addPatientBtn"
+            >
+                + Add Patient
+            </button>
+
+        </div>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <div class="search-container">
+
+            <input
+                    type="text"
+                    placeholder="Patient ID or Name..."
+                    id="patientSearch"
+            >
+
+            <select
+                    id="bloodGroupFilter"
+                    class="options"
+            >
+                <option value="">Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+
+
+            <select
+                    id="genderFilter"
+                    class="options"
+            >
+                <option value="">Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+
+            <button
+                    id="searchBtn"
+                    class="search-button"
+            >
+                Search
+            </button>
+
+
+            <button
+                    id="refreshBtn"
+                    class="refresh-button"
+            >
+                Refresh
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TABLE ================= -->
+
+    <div id="table-view">
+
+        <div id="message"></div>
+
+        <table id="patient-table">
+
+            <thead>
+
+            <tr>
+
+                <th>Patient ID</th>
+
+                <th>Full Name</th>
+
+                <th>Blood Group</th>
+
+                <th>DOB</th>
+
+                <th>Gender</th>
+
+                <th>Contact</th>
+
+                <th>Address</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+            </thead>
+
+
+            <tbody id="patient-table-body">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+<!-- ================= PATIENT MODAL ================= -->
+
+<div
+        class="modal hidden"
+        id="patientModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Patient
+            </h2>
+
+            <button
+                    type="button"
+                    class="close-button"
+                    id="closeModal"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <form id="patientForm">
+
+            <input
+                    type="hidden"
+                    id="patientId"
+            >
+
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter full name"
+                    required
+            >
+
+
+            <label>
+                Blood Group
+            </label>
+
+            <select
+                    id="bloodGroup"
+                    required
+            >
+
+                <option value="">
+                    Select Blood Group
+                </option>
+
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+
+            </select>
+
+
+            <label>
+                Date of Birth
+            </label>
+
+            <input
+                    type="date"
+                    id="dob"
+                    required
+            >
+
+
+            <label>
+                Gender
+            </label>
+
+            <select
+                    id="gender"
+                    required
+            >
+
+                <option value="">
+                    Select Gender
+                </option>
+
+                <option value="Male">
+                    Male
+                </option>
+
+                <option value="Female">
+                    Female
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <label>
+                Address
+            </label>
+
+            <textarea
+                    id="address"
+                    placeholder="Enter address"
+                    required
+            ></textarea>
+
+
+            <label>
+                Contact Number
+            </label>
+
+            <input
+                    type="text"
+                    id="contactNumber"
+                    placeholder="Enter contact number"
+                    required
+            >
+
+
+            <label>
+                Emergency Contact Information
+            </label>
+
+            <input
+                    type="text"
+                    id="emergencyContact"
+                    placeholder="Emergency contact"
+                    required
+            >
+
+
+            <div class="modal-actions">
+
+                <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelModal"
+                >
+                    Cancel
+                </button>
+
+                <button
+                        type="submit"
+                        class="save-button"
+                >
+                    Save Patient
+                </button>
+
             </div>
 
-            <img src="/media/user.png" alt="user" id="user-login">
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= VIEW PATIENT MODAL ================= -->
+
+<div
+        class="modal hidden"
+        id="viewModal"
+>
+
+    <div class="modal-box view-box">
+
+        <div class="modal-header">
+
+            <h2>
+                Patient Details
+            </h2>
+
+            <button
+                    type="button"
+                    class="close-button"
+                    id="closeViewModal"
+            >
+                &times;
+            </button>
+
         </div>
 
-    </nav>
 
-    <main>
+        <div class="patient-details">
 
-        <div id="side-bar" style="grid-area: side-bar;">
+            <p>
+                <strong>Patient ID:</strong>
+                <span id="viewPatientId"></span>
+            </p>
 
-            <div id="dassbar-cart"></div>
-            <div id="Today-apointment"></div>
-            <div id="Apointment-request"></div>
-            <div id="Patient-visit"></div>
-            <div id="Notification"></div>
+            <p>
+                <strong>Full Name:</strong>
+                <span id="viewFullName"></span>
+            </p>
+
+            <p>
+                <strong>Blood Group:</strong>
+                <span id="viewBloodGroup"></span>
+            </p>
+
+            <p>
+                <strong>Date of Birth:</strong>
+                <span id="viewDOB"></span>
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                <span id="viewGender"></span>
+            </p>
+
+            <p>
+                <strong>Address:</strong>
+                <span id="viewAddress"></span>
+            </p>
+
+            <p>
+                <strong>Contact:</strong>
+                <span id="viewContact"></span>
+            </p>
+
+            <p>
+                <strong>Emergency Contact:</strong>
+                <span id="viewEmergency"></span>
+            </p>
 
         </div>
 
-        <div id="header-bar" style="grid-area: header-bar;">
+    </div>
 
-            <div class="header-container">
+</div>
 
-                <div id="title-container">
-                    <span id="title-bar"></span>
-                    <span class="title">Patients</span>
-                </div>
-                
-                <button class="add-button">+ Add patient</button>
 
-            </div>
-
-            <div class="search-container">
-                <input type="text" placeholder="Search..." class="search-icon">
-
-                <select name="blood-group" id="blood-group" class="options">
-                    <option value="blood-group">Blood Group</option>
-                    <option value="a">A</option>
-                    <option value="a+">A+</option>
-                    <option value="a">A</option>
-                    <option value="a">A</option>
-                    <option value="a">A</option>
-                    <option value="a">A</option>
-                    <option value="a">A</option>
-                </select>
-
-                <select name="gender" id="gender" class="options">
-                    <option value="gender">gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </div>
-        </div>
-
-        <div id="table-view" style="grid-area: table-view;">
-            <table id="patient-table">
-                <thead>
-                <tr>
-                    <th>Patient ID</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Blood Group</th>
-                    <th>Phone</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-
-                <tbody id="patient-table-body">
-                <!-- JavaScript will add patients here -->
-                </tbody>
-            </table>
-        </div>
-
-    </main>
-
-<script src = "js/script.js"></script>
-
+<script src="js/script.js"></script>
 
 </body>
-
 </html>

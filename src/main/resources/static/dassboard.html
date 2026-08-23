@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCare Dashboard</title>
+
+    <link rel="stylesheet" href="css/dassboard.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <span>Smart</span>Care
+    </div>
+
+    <div class="search-box">
+        <img src="media/search-icon.png" alt="Search">
+        <input type="text" id="globalSearch" placeholder="Search...">
+    </div>
+
+    <div class="nav-right">
+
+        <div class="notification-icon">
+            <img src="media/bell.png" alt="Notifications">
+            <span>2</span>
+        </div>
+
+        <div class="notification-icon">
+            <img src="media/email.png" alt="Messages">
+            <span>2</span>
+        </div>
+
+        <img src="media/user.png" class="user-icon" alt="User">
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN CONTAINER ================= -->
+
+<div class="dashboard-container">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            SmartCare
+        </div>
+
+        <a href="dassboard.html" class="menu-item active">
+            <span><img src="media/menu.png" alt="" srcset=""></span>
+            Dashboard
+        </a>
+
+        <a href="appointment.html" class="menu-item">
+            <span><img src="media/online-booking.png" alt="" srcset=""></span>
+            Appointments
+        </a>
+
+        <a href="patient.html" class="menu-item">
+            <span><img src="media/patient.png" alt="" srcset=""></span>
+            Patients
+        </a>
+
+        <a href="doctor.html" class="menu-item">
+            <span><img src="media/doctor.png" alt="" srcset=""></span>
+            Doctors
+        </a>
+        <a href="treatment.html" class="menu-item">
+            <span><img src="media/stethoscope.png" alt="" srcset=""></span>
+            Treatment
+        </a>
+
+        <a href="room.html" class="menu-item">
+            <span><img src="media/inpatient.png" alt="" srcset=""></span>
+            Rooms
+        </a>
+
+        <a href="addmission.html" class="menu-item">
+            <span><img src="media/hospital.png" alt="" srcset=""></span>
+            Admissions
+        </a>
+
+        <a href="laboratory.html" class="menu-item">
+            <span><img src="media/microscope.png" alt="" srcset=""></span>
+            Laboratory
+        </a>
+
+        <a href="billing.html" class="menu-item">
+            <span><img src="media/transaction-history.png" alt="" srcset=""></span>
+            Billing & Payment
+        </a>
+
+        <a href="department.html" class="menu-item">
+            <span><img src="media/institution.png" alt="" srcset=""></span>
+            Departments
+        </a>
+
+        <a href="#" class="menu-item">
+            <span><img src="media/medical-report.png" alt="" srcset=""></span>
+            Reports
+        </a>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="menu-item">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <a href="#" class="menu-item logout">
+                <span>↪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= DASHBOARD CONTENT ================= -->
+
+    <main class="main-content">
+
+        <div class="page-header">
+
+            <div>
+                <h1>Dashboard</h1>
+                <p>Welcome back to SmartCare</p>
+            </div>
+
+            <button class="add-button" id="addPatientBtn">
+                + Add New
+            </button>
+
+        </div>
+
+
+        <!-- ================= STAT CARDS ================= -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <img src="media/users.png" alt="" srcset="">
+                </div>
+
+                <div>
+                    <p>Total Patients</p>
+                    <h2 id="totalPatients">1250</h2>
+                    <small>+8% this month</small>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <img src="media/calendar.png" alt="" srcset="">
+                </div>
+
+                <div>
+                    <p>Today's Appointments</p>
+                    <h2 id="todayAppointments">24</h2>
+                    <small>5 pending</small>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <img src="media/inpatient.png" alt="" srcset="">
+                </div>
+
+                <div>
+                    <p>Available Beds</p>
+                    <h2 id="availableBeds">10</h2>
+                    <small>Hospital capacity</small>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <img src="media/transaction-history.png" alt="" srcset="">
+                </div>
+
+                <div>
+                    <p>Today's Revenue</p>
+                    <h2 id="todayRevenue">Rs 1.2M</h2>
+                    <small>+12% today</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TOP CONTENT ================= -->
+
+        <section class="top-grid">
+
+
+            <!-- TODAY APPOINTMENTS -->
+
+            <div class="card appointments-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h3>Today's Appointments</h3>
+                        <p>Upcoming appointments</p>
+                    </div>
+
+                    <button class="view-btn">
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div class="appointment-list">
+
+                    <div class="appointment">
+
+                        <div class="time">
+                            09:00
+                            <span>AM</span>
+                        </div>
+
+                        <div class="patient">
+                            <strong>John Perera</strong>
+                            <small>General Consultation</small>
+                        </div>
+
+                        <div class="doctor">
+                            Dr. Silva
+                        </div>
+
+                        <span class="status confirmed">
+                            Confirmed
+                        </span>
+
+                    </div>
+
+
+                    <div class="appointment">
+
+                        <div class="time">
+                            09:30
+                            <span>AM</span>
+                        </div>
+
+                        <div class="patient">
+                            <strong>Nimal Fernando</strong>
+                            <small>Cardiology</small>
+                        </div>
+
+                        <div class="doctor">
+                            Dr. Perera
+                        </div>
+
+                        <span class="status waiting">
+                            Waiting
+                        </span>
+
+                    </div>
+
+
+                    <div class="appointment">
+
+                        <div class="time">
+                            10:00
+                            <span>AM</span>
+                        </div>
+
+                        <div class="patient">
+                            <strong>Kasun</strong>
+                            <small>Dental Checkup</small>
+                        </div>
+
+                        <div class="doctor">
+                            Dr. Chameera
+                        </div>
+
+                        <span class="status progress">
+                            In Progress
+                        </span>
+
+                    </div>
+
+
+                    <div class="appointment">
+
+                        <div class="time">
+                            13:15
+                            <span>PM</span>
+                        </div>
+
+                        <div class="patient">
+                            <strong>Duminda Lakmal</strong>
+                            <small>Medical Consultation</small>
+                        </div>
+
+                        <div class="doctor">
+                            Dr. Ishani
+                        </div>
+
+                        <span class="status completed">
+                            Completed
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTIFICATION -->
+
+            <div class="card notification-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h3>Notifications</h3>
+                        <p>Recent activities</p>
+                    </div>
+
+                    <button class="view-btn">
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div class="notification-list">
+
+                    <div class="notification">
+                        <div class="notification-dot"></div>
+
+                        <div>
+                            <strong>New appointment request</strong>
+                            <p>Patient requested an appointment</p>
+                            <small>5 min ago</small>
+                        </div>
+                    </div>
+
+
+                    <div class="notification">
+                        <div class="notification-dot"></div>
+
+                        <div>
+                            <strong>Laboratory result ready</strong>
+                            <p>Blood test result is available</p>
+                            <small>15 min ago</small>
+                        </div>
+                    </div>
+
+
+                    <div class="notification">
+                        <div class="notification-dot"></div>
+
+                        <div>
+                            <strong>New patient registered</strong>
+                            <p>A new patient was added</p>
+                            <small>30 min ago</small>
+                        </div>
+                    </div>
+
+
+                    <div class="notification">
+                        <div class="notification-dot"></div>
+
+                        <div>
+                            <strong>Payment received</strong>
+                            <p>Patient payment successfully completed</p>
+                            <small>1 hour ago</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= BOTTOM CONTENT ================= -->
+
+        <section class="bottom-grid">
+
+
+            <!-- PATIENT VISITS -->
+
+            <div class="card chart-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h3>Patient Visits</h3>
+                        <p>Last 7 days</p>
+                    </div>
+
+                    <select id="chartPeriod">
+
+                        <option value="7">Last 7 days</option>
+                        <option value="30">Last 30 days</option>
+
+                    </select>
+
+                </div>
+
+                <div class="chart">
+
+                    <div class="y-axis">
+                        <span>250</span>
+                        <span>200</span>
+                        <span>150</span>
+                        <span>100</span>
+                        <span>50</span>
+                        <span>0</span>
+                    </div>
+
+                    <div class="bars">
+
+                        <div class="bar-container">
+                            <div class="bar" style="height: 65%;"></div>
+                            <span>Mon</span>
+                        </div>
+
+                        <div class="bar-container">
+                            <div class="bar" style="height: 80%;"></div>
+                            <span>Tue</span>
+                        </div>
+
+                        <div class="bar-container">
+                            <div class="bar" style="height: 55%;"></div>
+                            <span>Wed</span>
+                        </div>
+
+                        <div class="bar-container">
+                            <div class="bar" style="height: 90%;"></div>
+                            <span>Thu</span>
+                        </div>
+
+                        <div class="bar-container">
+                            <div class="bar" style="height: 72%;"></div>
+                            <span>Fri</span>
+                        </div>
+
+                        <div class="bar-container">
+                            <div class="bar" style="height: 60%;"></div>
+                            <span>Sat</span>
+                        </div>
+
+                        <div class="bar-container">
+                            <div class="bar" style="height: 45%;"></div>
+                            <span>Sun</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- APPOINTMENT REQUEST -->
+
+            <div class="card request-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h3>Appointment Requests</h3>
+                        <p>New appointment requests</p>
+                    </div>
+
+                    <button class="view-btn">
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div class="request-table">
+
+                    <div class="table-row table-heading">
+                        <span>Name</span>
+                        <span>Date</span>
+                        <span>Time</span>
+                        <span>Action</span>
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>Kushan</span>
+                        <span>19 Jun</span>
+                        <span>14:00</span>
+
+                        <div>
+                            <button class="accept-btn">Accept</button>
+                            <button class="decline-btn">Decline</button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>Amal</span>
+                        <span>19 Jun</span>
+                        <span>14:30</span>
+
+                        <div>
+                            <button class="accept-btn">Accept</button>
+                            <button class="decline-btn">Decline</button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>Sahan</span>
+                        <span>19 Jun</span>
+                        <span>15:00</span>
+
+                        <div>
+                            <button class="accept-btn">Accept</button>
+                            <button class="decline-btn">Decline</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="js/dassboard.js"></script>
+
+</body>
+
+</html>

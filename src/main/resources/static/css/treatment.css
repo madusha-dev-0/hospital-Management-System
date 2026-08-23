@@ -12,91 +12,6 @@ body {
     color: #222;
 }
 
-/* ================= DELETE MESSAGE POPUP ================= */
-
-.message-modal {
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.45);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 2000;
-}
-
-.message-modal.hidden {
-    display: none;
-}
-
-.message-modal-box {
-    width: 500px;
-    max-width: 90%;
-
-    background: white;
-
-    border-radius: 20px;
-
-    padding: 25px;
-
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-}
-
-.message-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 20px;
-}
-
-.message-modal-header h2 {
-    margin: 0;
-
-    color: #E74C3C;
-
-    font-size: 22px;
-}
-
-.message-close {
-    border: none;
-    background: transparent;
-
-    font-size: 30px;
-
-    cursor: pointer;
-
-    color: #555;
-}
-
-.delete-message-content {
-    background: #fff5f5;
-
-    border-left: 4px solid #E74C3C;
-
-    border-radius: 10px;
-
-    padding: 15px;
-
-    color: #444;
-
-    line-height: 1.8;
-
-    white-space: pre-line;
-}
-
-.message-modal-actions {
-    display: flex;
-    justify-content: flex-end;
-
-    margin-top: 20px;
-}
-
-
-/* ================= NAVIGATION ================= */
-
 nav {
     width: 95%;
     height: 75px;
@@ -116,7 +31,7 @@ nav {
     color: #46BCE0;
 }
 
-#topSearchBar {
+#search-bar {
     width: 400px;
     height: 35px;
 
@@ -151,8 +66,8 @@ nav {
     border-radius: 20px;
 
     color: white;
-    font-size: 12px;
 
+    font-size: 12px;
     text-align: center;
 
     background-color: #E74C3C;
@@ -165,7 +80,7 @@ nav {
 }
 
 
-/* ================= MAIN ================= */
+/* MAIN */
 
 main {
     width: 95%;
@@ -175,7 +90,7 @@ main {
 
     gap: 20px;
 
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 400px 1fr;
 
     grid-template-rows:
         175px
@@ -187,33 +102,27 @@ main {
 }
 
 
+/* SIDEBAR */
 
-
-/* ================= SIDEBAR ================= */
-
-.sidebar {
+#side-bar {
     grid-area: side-bar;
-
-    background-color: white;
 
     border-radius: 20px;
 
-    padding: 25px 15px;
+    background-color: white;
 
+    padding: 25px 15px;
+}
+
+.side-menu {
     display: flex;
+
     flex-direction: column;
 
-    min-height: 100%;
+    gap: 5px;
 }
 
-.sidebar-title {
-    font-size: 28px;
-    font-weight: 600;
-
-    padding: 0 18px 25px;
-}
-
-.menu-item {
+.side-menu div {
     height: 48px;
 
     display: flex;
@@ -223,54 +132,19 @@ main {
 
     padding: 0 18px;
 
-    margin-bottom: 5px;
-
     border-radius: 25px;
 
-    font-size: 16px;
-
-    color: #222;
-
-    text-decoration: none;
+    font-size: 18px;
 
     cursor: pointer;
 }
 
-.menu-item:hover {
-    background-color: #e9f9fd;
-}
-
-.menu-item.active {
+.side-menu div.active {
     background-color: #46BCE0;
-
-    color: white;
-}
-
-.menu-item span {
-    width: 28px;
-    height: 28px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-}
-
-.menu-item img {
-    width: 24px;
-    height: 24px;
-
-    object-fit: contain;
-}
-
-.sidebar-bottom {
-    margin-top: auto;
-
-    padding-top: 20px;
 }
 
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 #header-bar {
     grid-area: header-bar;
@@ -320,7 +194,7 @@ main {
 }
 
 .add-button {
-    min-width: 170px;
+    min-width: 210px;
 
     height: 42px;
 
@@ -337,25 +211,26 @@ main {
     cursor: pointer;
 }
 
-.add-button:hover {
+.add-button:hover,
+.save-button:hover {
     background-color: #2fa9ce;
 }
 
 
-/* ================= SEARCH ================= */
+/* SEARCH */
 
 .search-container {
     margin: 20px;
 
     display: flex;
 
-    gap: 15px;
+    gap: 25px;
 
     align-items: center;
 }
 
-#patientSearch {
-    width: 300px;
+#treatmentSearch {
+    width: 350px;
 
     height: 35px;
 
@@ -370,10 +245,11 @@ main {
     outline: none;
 }
 
-.options {
+.options,
+.date-option {
     height: 35px;
 
-    min-width: 130px;
+    min-width: 145px;
 
     border: none;
 
@@ -381,31 +257,11 @@ main {
 
     padding: 0 15px;
 
-    font-size: 14px;
+    font-size: 15px;
 
     cursor: pointer;
 
     background-color: #f2f2f2;
-}
-
-.search-button {
-    height: 35px;
-
-    padding: 0 20px;
-
-    border: none;
-
-    border-radius: 20px;
-
-    background-color: #46BCE0;
-
-    color: white;
-
-    cursor: pointer;
-}
-
-.search-button:hover {
-    background-color: #2fa9ce;
 }
 
 .refresh-button {
@@ -423,67 +279,33 @@ main {
 }
 
 
-/* ================= TABLE VIEW ================= */
+/* TABLE */
 
 #table-view {
     grid-area: table-view;
 
     border-radius: 20px;
+
     background-color: white;
 
-    padding: 20px;
+    padding: 25px;
 
-    /* IMPORTANT */
-    min-height: 0;
-    height: 100%;
-
-    overflow: hidden;
-
-    display: flex;
-    flex-direction: column;
+    overflow-x: auto;
 }
 
-/* ================= TABLE SCROLL ================= */
-
-#patient-table {
+#treatment-table {
     width: 100%;
 
     border-collapse: collapse;
 
     font-size: 14px;
-
-    /* IMPORTANT */
-    table-layout: fixed;
 }
 
-/* Make table header stay at top */
-#patient-table thead {
+#treatment-table thead {
     background-color: #f5f8fa;
 }
 
-/* Scroll only table body */
-#patient-table tbody {
-    display: block;
-
-    max-height: 500px;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    width: 100%;
-}
-
-/* Keep header and body columns aligned */
-#patient-table thead,
-#patient-table tbody tr {
-    display: table;
-
-    width: 100%;
-
-    table-layout: fixed;
-}
-
-#patient-table th {
+#treatment-table th {
     text-align: left;
 
     padding: 15px;
@@ -495,21 +317,20 @@ main {
     border-bottom: 2px solid #eeeeee;
 }
 
-#patient-table td {
+#treatment-table td {
     padding: 15px;
 
     border-bottom: 1px solid #eeeeee;
 
     color: #333;
-
-    word-wrap: break-word;
 }
 
-#patient-table tbody tr:hover {
+#treatment-table tbody tr:hover {
     background-color: #f8fcfd;
 }
 
-/* ================= ACTION BUTTONS ================= */
+
+/* BUTTONS */
 
 .edit-button,
 .delete-button,
@@ -550,7 +371,46 @@ main {
 }
 
 
-/* ================= MESSAGE ================= */
+/* STATUS */
+
+.status {
+    display: inline-block;
+
+    padding: 5px 12px;
+
+    border-radius: 15px;
+
+    font-size: 12px;
+}
+
+.status-Ongoing {
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+.status-Completed {
+    background: #dff5e5;
+
+    color: #208443;
+}
+
+.status-Cancelled {
+    background: #fde2df;
+
+    color: #c0392b;
+}
+
+
+/* MESSAGE */
+
+.empty-message {
+    text-align: center;
+
+    padding: 40px !important;
+
+    color: #888 !important;
+}
 
 #message {
     min-height: 25px;
@@ -568,16 +428,8 @@ main {
     color: #d63031;
 }
 
-.empty-message {
-    text-align: center;
 
-    padding: 40px !important;
-
-    color: #888 !important;
-}
-
-
-/* ================= MODAL ================= */
+/* MODAL */
 
 .modal {
     position: fixed;
@@ -615,8 +467,7 @@ main {
     padding: 25px;
 
     box-shadow:
-            0 15px 40px
-            rgba(0, 0, 0, 0.2);
+            0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .modal-header {
@@ -644,15 +495,15 @@ main {
 }
 
 
-/* ================= FORM ================= */
+/* FORM */
 
-#patientForm {
+#treatmentForm {
     display: flex;
 
     flex-direction: column;
 }
 
-#patientForm label {
+#treatmentForm label {
     font-size: 14px;
 
     font-weight: 500;
@@ -660,9 +511,9 @@ main {
     margin: 10px 0 5px;
 }
 
-#patientForm input,
-#patientForm select,
-#patientForm textarea {
+#treatmentForm input,
+#treatmentForm select,
+#treatmentForm textarea {
     height: 42px;
 
     border: 1px solid #ddd;
@@ -676,7 +527,7 @@ main {
     outline: none;
 }
 
-#patientForm textarea {
+#treatmentForm textarea {
     height: 80px;
 
     padding-top: 10px;
@@ -684,14 +535,14 @@ main {
     resize: vertical;
 }
 
-#patientForm input:focus,
-#patientForm select:focus,
-#patientForm textarea:focus {
+#treatmentForm input:focus,
+#treatmentForm select:focus,
+#treatmentForm textarea:focus {
     border-color: #46BCE0;
 }
 
 
-/* ================= MODAL BUTTONS ================= */
+/* MODAL ACTIONS */
 
 .modal-actions {
     display: flex;
@@ -722,55 +573,35 @@ main {
 
 .save-button {
     background: #46BCE0;
-
-    color: white;
-}
-
-.save-button:hover {
-    background: #2fa9ce;
 }
 
 
-/* ================= VIEW PATIENT ================= */
+/* DETAILS */
 
-.view-box {
-    width: 550px;
+.details p {
+    padding: 10px;
+
+    border-bottom: 1px solid #eee;
+
+    margin: 0;
 }
 
-.patient-details {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-}
-
-.patient-details p {
-    background: #f7f9fa;
-
-    padding: 12px 15px;
-
-    border-radius: 10px;
-
-    margin: 3px 0;
-}
-
-.patient-details strong {
+.details strong {
     display: inline-block;
 
-    width: 190px;
+    width: 150px;
 }
 
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
 
     #company-logo {
         font-size: 38px;
     }
 
-    #topSearchBar {
+    #search-bar {
         width: 260px;
     }
 
@@ -784,46 +615,6 @@ main {
 
     .search-container {
         flex-wrap: wrap;
-    }
-}
-
-@media (max-width: 800px) {
-
-    nav {
-        width: 95%;
-    }
-
-    #topSearchBar {
-        display: none;
-    }
-
-    main {
-        display: flex;
-
-        flex-direction: column;
-    }
-
-    #side-bar {
-        width: 100%;
-    }
-
-    .side-menu {
-        display: grid;
-
-        grid-template-columns:
-                repeat(2, 1fr);
-    }
-
-    #header-bar {
-        min-height: 180px;
-    }
-
-    .search-container {
-        flex-wrap: wrap;
-    }
-
-    #patientSearch {
-        width: 100%;
     }
 
 }

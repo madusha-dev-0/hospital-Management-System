@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Care - Laboratory</title>
+
+    <link rel="stylesheet" href="css/laboratory.css">
+</head>
+
+<body>
+
+<nav>
+
+    <div id="company-logo">
+        <span id="Smart">Smart </span>Care
+    </div>
+
+    <input
+            type="text"
+            placeholder="Search..."
+            id="search-bar"
+    >
+
+    <div id="nav-icons">
+
+        <div class="notifi-container">
+            <img src="/media/bell.png" alt="alert" class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <div class="notifi-container">
+            <img src="/media/email.png" alt="mail" class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <img
+                src="/media/user.png"
+                alt="user"
+                id="user-login"
+        >
+
+    </div>
+
+</nav>
+
+
+<main>
+
+    <!-- SIDE BAR -->
+    <div id="side-bar">
+
+        <div class="side-menu">
+
+            <div>▦ <span>Dashboard</span></div>
+
+            <div>▣ <span>Appointments</span></div>
+
+            <div>♙ <span>Patients</span></div>
+
+            <div>♙ <span>Doctors</span></div>
+
+            <div>♧ <span>Staff</span></div>
+
+            <div>♧ <span>Treatment</span></div>
+
+            <div>▱ <span>Rooms</span></div>
+
+            <div>▣ <span>Admissions</span></div>
+
+            <div class="active">♨ <span>Laboratory</span></div>
+
+            <div>▤ <span>Billing &amp; Payment</span></div>
+
+            <div>♜ <span>Departments</span></div>
+
+            <div>▧ <span>Reports</span></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEADER -->
+    <div id="header-bar">
+
+        <div class="header-container">
+
+            <div id="title-container">
+
+                <span id="title-bar"></span>
+
+                <span class="title">
+                    Laboratory
+                </span>
+
+            </div>
+
+            <button
+                    class="add-button"
+                    id="addLaboratoryBtn"
+            >
+                + Add Laboratory Test
+            </button>
+
+        </div>
+
+
+        <div class="search-container">
+
+            <input
+                    type="text"
+                    placeholder="Search Patient ID or Test Name..."
+                    id="laboratorySearch"
+            >
+
+            <select
+                    id="statusFilter"
+                    class="options"
+            >
+
+                <option value="">
+                    Status
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="In Progress">
+                    In Progress
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <input
+                    type="date"
+                    id="dateFilter"
+                    class="date-option"
+            >
+
+
+            <button
+                    id="refreshBtn"
+                    class="refresh-button"
+            >
+                Refresh
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLE -->
+    <div id="table-view">
+
+        <div id="message"></div>
+
+
+        <table id="laboratory-table">
+
+            <thead>
+
+            <tr>
+
+                <th>Test ID</th>
+
+                <th>Patient ID</th>
+
+                <th>Test Name</th>
+
+                <th>Date</th>
+
+                <th>Result</th>
+
+                <th>Status</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+            </thead>
+
+
+            <tbody id="laboratory-table-body">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+
+<!-- ADD / EDIT MODAL -->
+
+<div
+        class="modal hidden"
+        id="laboratoryModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Laboratory Test
+            </h2>
+
+            <button
+                    type="button"
+                    class="close-button"
+                    id="closeModal"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <form id="laboratoryForm">
+
+            <input
+                    type="hidden"
+                    id="laboratoryId"
+            >
+
+
+            <label>
+                Patient ID
+            </label>
+
+            <input
+                    type="number"
+                    id="patientId"
+                    min="1"
+                    required
+            >
+
+
+            <label>
+                Test Name
+            </label>
+
+            <input
+                    type="text"
+                    id="testName"
+                    placeholder="e.g. Blood Test"
+                    required
+            >
+
+
+            <label>
+                Test Date
+            </label>
+
+            <input
+                    type="date"
+                    id="testDate"
+                    required
+            >
+
+
+            <label>
+                Result
+            </label>
+
+            <input
+                    type="text"
+                    id="testResult"
+                    placeholder="e.g. Normal / 120 mg/dL"
+            >
+
+
+            <label>
+                Status
+            </label>
+
+            <select
+                    id="testStatus"
+                    required
+            >
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="In Progress">
+                    In Progress
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <div class="modal-actions">
+
+                <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelModal"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                        type="submit"
+                        class="save-button"
+                >
+                    Save Laboratory Test
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- VIEW MODAL -->
+
+<div
+        class="modal hidden"
+        id="viewModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>
+                Laboratory Test Details
+            </h2>
+
+            <button
+                    type="button"
+                    class="close-button"
+                    id="closeViewModal"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <div class="details">
+
+            <p>
+                <strong>Test ID:</strong>
+                <span id="viewTestId"></span>
+            </p>
+
+            <p>
+                <strong>Patient ID:</strong>
+                <span id="viewPatientId"></span>
+            </p>
+
+            <p>
+                <strong>Test Name:</strong>
+                <span id="viewTestName"></span>
+            </p>
+
+            <p>
+                <strong>Date:</strong>
+                <span id="viewTestDate"></span>
+            </p>
+
+            <p>
+                <strong>Result:</strong>
+                <span id="viewTestResult"></span>
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <span id="viewTestStatus"></span>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="js/laboratory.js"></script>
+
+</body>
+
+</html>

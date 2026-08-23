@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: "Poppins", sans-serif;
+
+    background-color: #D2C7C7;
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.page-container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    min-height: 650px;
+
+    margin: 50px auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    background-color: white;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+
+/* =========================
+   LEFT
+========================= */
+
+.welcome-section {
+
+    background-color: #46BCE0;
+
+    color: white;
+
+    padding: 50px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+
+.logo {
+
+    font-size: 45px;
+
+    font-weight: 600;
+}
+
+
+.welcome-content {
+
+    margin-bottom: 80px;
+}
+
+
+.welcome-content h1 {
+
+    font-size: 42px;
+
+    margin: 0 0 20px;
+
+    font-weight: 600;
+}
+
+
+.welcome-content p {
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    max-width: 450px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-section {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px;
+}
+
+
+.form-container {
+
+    width: 100%;
+
+    max-width: 400px;
+}
+
+
+.form-container h2 {
+
+    margin: 0;
+
+    font-size: 40px;
+
+    font-weight: 600;
+
+    color: #333;
+}
+
+
+.subtitle {
+
+    color: #888;
+
+    margin-top: 5px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-group {
+
+    margin-bottom: 17px;
+}
+
+
+.input-group label {
+
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    color: #444;
+
+    margin-bottom: 7px;
+}
+
+
+.input-group input {
+
+    width: 100%;
+
+    height: 47px;
+
+    padding: 0 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+}
+
+
+.input-group input:focus {
+
+    border-color: #46BCE0;
+}
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+.password-container {
+
+    position: relative;
+}
+
+
+.password-container input {
+
+    padding-right: 65px;
+}
+
+
+.show-password {
+
+    position: absolute;
+
+    right: 10px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: none;
+
+    color: #46BCE0;
+
+    cursor: pointer;
+
+    font-family: "Poppins", sans-serif;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error {
+
+    display: block;
+
+    color: #E74C3C;
+
+    font-size: 12px;
+
+    margin-top: 4px;
+
+    min-height: 17px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.main-button {
+
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background-color: #46BCE0;
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
+.main-button:hover {
+
+    opacity: 0.85;
+}
+
+
+.main-button:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   SWITCH
+========================= */
+
+.switch-page {
+
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+.switch-page a {
+
+    color: #46BCE0;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   POPUP
+========================= */
+
+#popup-message {
+
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 12px 15px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+#popup-message.show {
+
+    display: block;
+}
+
+
+#popup-message.success {
+
+    background-color: #d4edda;
+
+    color: #155724;
+}
+
+
+#popup-message.error-message {
+
+    background-color: #f8d7da;
+
+    color: #721c24;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 750px) {
+
+    .page-container {
+
+        width: 95%;
+
+        margin: 20px auto;
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .welcome-section {
+
+        padding: 35px;
+
+        min-height: 280px;
+    }
+
+
+    .welcome-content {
+
+        margin-bottom: 0;
+    }
+
+
+    .welcome-content h1 {
+
+        font-size: 32px;
+    }
+
+
+    .logo {
+
+        font-size: 35px;
+    }
+
+
+    .form-section {
+
+        padding: 35px 25px;
+    }
+
+}

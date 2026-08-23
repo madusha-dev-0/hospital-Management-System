@@ -2,7 +2,7 @@ CREATE DATABASE smartcare_db;
 
 USE smartcare_db;
 
-CREATE TABLE Patient (
+CREATE TABLE patient (
 	Patient_ID INT PRIMARY KEY AUTO_INCREMENT,
 	Full_Name VARCHAR(100) NOT NULL,
 					  Blood_Group VARCHAR(5),
@@ -14,14 +14,14 @@ CREATE TABLE Patient (
 );
 
 
-CREATE TABLE Department (
+CREATE TABLE department (
 	Department_ID INT PRIMARY KEY AUTO_INCREMENT,
 	Department_Name VARCHAR(100) NOT NULL UNIQUE,
 						 Location VARCHAR(100) NOT NULL,
 						 HeadDoctor_ID INT NULL
 );
 
-CREATE TABLE Room (
+CREATE TABLE room (
 	Room_ID INT PRIMARY KEY AUTO_INCREMENT,
 	Room_Number VARCHAR(10) NOT NULL UNIQUE,
 				   Room_Category ENUM('General Ward','Private Room','ICU') NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE Room (
 );
 
 
-CREATE TABLE Doctor (
+CREATE TABLE doctor (
 	Doctor_ID INT PRIMARY KEY AUTO_INCREMENT,
 	Department_ID INT NOT NULL,
 	Doctor_Name VARCHAR(100) NOT NULL,
@@ -44,12 +44,12 @@ CREATE TABLE Doctor (
 					 REFERENCES Department(Department_ID)
 );
 
-ALTER TABLE Department
+ALTER TABLE department
 ADD CONSTRAINT FK_Department_HeadDoctor
 FOREIGN KEY (HeadDoctor_ID)
 REFERENCES Doctor(Doctor_ID);
 
-CREATE TABLE Appointment (
+CREATE TABLE appointment (
 	Appointment_ID INT PRIMARY KEY AUTO_INCREMENT,
 	Patient_ID INT NOT NULL,
 	Doctor_ID INT NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE Appointment (
 						  UNIQUE (Doctor_ID, Appointment_Date, Appointment_Time)
 );
 
-CREATE TABLE Admission (
+CREATE TABLE admission (
 	Admission_ID INT PRIMARY KEY AUTO_INCREMENT,
 	Patient_ID INT NOT NULL,
 	Room_ID INT NOT NULL,
@@ -88,27 +88,24 @@ CREATE TABLE Admission (
 						REFERENCES Room(Room_ID)
 );
 
-CREATE TABLE Treatment (
-	Treatment_ID INT PRIMARY KEY AUTO_INCREMENT,
-	Patient_ID INT NOT NULL,
-	Doctor_ID INT NOT NULL,
-	Diagnosis VARCHAR(255) NOT NULL,
-						Prescription_Details TEXT,
-						Treatment_Notes TEXT,
-						Treatment_Date DATE NOT NULL,
-						
-						CONSTRAINT FK_Treatment_Patient
-						FOREIGN KEY (Patient_ID)
-						REFERENCES Patient(Patient_ID),
-						
-						CONSTRAINT FK_Treatment_Doctor
-						FOREIGN KEY (Doctor_ID)
-						REFERENCES Doctor(Doctor_ID)
+CREATE TABLE treatment (
+    Treatment_ID INT NOT NULL AUTO_INCREMENT,
+    Appointment_ID INT NOT NULL,
+    Diagnosis VARCHAR(255) NOT NULL,
+    Prescription_Details TEXT,
+    Treatment_Notes TEXT,
+    Treatment_Date DATE NOT NULL,
+
+    PRIMARY KEY (Treatment_ID),
+
+    CONSTRAINT FK_Treatment_Appointment
+        FOREIGN KEY (Appointment_ID)
+        REFERENCES Appointment(Appointment_ID)
 );
 
 
 
-CREATE TABLE Laboratory (
+CREATE TABLE laboratory (
 	Lab_Test_ID INT PRIMARY KEY AUTO_INCREMENT,
 	Patient_ID INT NOT NULL,
 	Doctor_ID INT NOT NULL,
@@ -128,7 +125,7 @@ CREATE TABLE Laboratory (
 );
 
 
-CREATE TABLE Billing (
+CREATE TABLE billing (
 	Bill_ID INT PRIMARY KEY AUTO_INCREMENT,
 	Patient_ID INT NOT NULL,
 	Bill_Date DATE NOT NULL,

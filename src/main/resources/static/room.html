@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Care - Rooms</title>
+
+    <link rel="stylesheet" href="css/room.css">
+</head>
+
+<body>
+
+<nav>
+
+    <div id="company-logo">
+        <span id="Smart">Smart </span>Care
+    </div>
+
+    <input type="text" placeholder="Search..." id="search-bar">
+
+    <div id="nav-icons">
+
+        <div class="notifi-container">
+            <img src="/media/bell.png" alt="alert" class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <div class="notifi-container">
+            <img src="/media/email.png" alt="mail" class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <img src="/media/user.png" alt="user" id="user-login">
+
+    </div>
+
+</nav>
+
+
+<main>
+
+    <!-- SIDE BAR -->
+
+    <div id="side-bar">
+
+        <div class="side-menu">
+
+            <div>▦ <span>Dashboard</span></div>
+
+            <div>▣ <span>Appointments</span></div>
+
+            <div>♙ <span>Patients</span></div>
+
+            <div>♙ <span>Doctors</span></div>
+
+            <div>♧ <span>Staff</span></div>
+
+            <div>♧ <span>Treatment</span></div>
+
+            <div class="active">▱ <span>Rooms</span></div>
+
+            <div>▣ <span>Admissions</span></div>
+
+            <div>♨ <span>Laboratory</span></div>
+
+            <div>▤ <span>Billing &amp; Payment</span></div>
+
+            <div>♜ <span>Departments</span></div>
+
+            <div>▧ <span>Reports</span></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEADER -->
+
+    <div id="header-bar">
+
+        <div class="header-container">
+
+            <div id="title-container">
+
+                <span id="title-bar"></span>
+
+                <span class="title">
+                    Rooms
+                </span>
+
+            </div>
+
+            <button class="add-button" id="addRoomBtn">
+                + Add Room
+            </button>
+
+        </div>
+
+
+        <div class="search-container">
+
+            <input
+                    type="text"
+                    placeholder="Search Room ID / Number..."
+                    id="roomSearch"
+            >
+
+            <select id="statusFilter" class="options">
+
+                <option value="">
+                    Status
+                </option>
+
+                <option value="Available">
+                    Available
+                </option>
+
+                <option value="Occupied">
+                    Occupied
+                </option>
+
+                <option value="Maintenance">
+                    Maintenance
+                </option>
+
+            </select>
+
+
+            <select id="typeFilter" class="options">
+
+                <option value="">
+                    Room Type
+                </option>
+
+                <option value="General">
+                    General
+                </option>
+
+                <option value="Private">
+                    Private
+                </option>
+
+                <option value="ICU">
+                    ICU
+                </option>
+
+                <option value="Emergency">
+                    Emergency
+                </option>
+
+            </select>
+
+
+            <button id="refreshBtn" class="refresh-button">
+                Refresh
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLE -->
+
+    <div id="table-view">
+
+        <div id="message"></div>
+
+        <table id="room-table">
+
+            <thead>
+
+            <tr>
+
+                <th>
+                    Room ID
+                </th>
+
+                <th>
+                    Room Number
+                </th>
+
+                <th>
+                    Room Type
+                </th>
+
+                <th>
+                    Status
+                </th>
+
+                <th>
+                    Actions
+                </th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="room-table-body">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+<!-- ADD / EDIT MODAL -->
+
+<div class="modal hidden" id="roomModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Room
+            </h2>
+
+            <button
+                    type="button"
+                    class="close-button"
+                    id="closeModal">
+                &times;
+            </button>
+
+        </div>
+
+
+        <form id="roomForm">
+
+            <input
+                    type="hidden"
+                    id="roomId"
+            >
+
+
+            <label>
+                Room Number
+            </label>
+
+            <input
+                    type="text"
+                    id="roomNumber"
+                    placeholder="Example: 2308"
+                    required
+            >
+
+
+            <label>
+                Room Type
+            </label>
+
+            <select
+                    id="roomType"
+                    required
+            >
+
+                <option value="">
+                    Select Room Type
+                </option>
+
+                <option value="General">
+                    General
+                </option>
+
+                <option value="Private">
+                    Private
+                </option>
+
+                <option value="ICU">
+                    ICU
+                </option>
+
+                <option value="Emergency">
+                    Emergency
+                </option>
+
+            </select>
+
+
+            <label>
+                Status
+            </label>
+
+            <select
+                    id="roomStatus"
+                    required
+            >
+
+                <option value="Available">
+                    Available
+                </option>
+
+                <option value="Occupied">
+                    Occupied
+                </option>
+
+                <option value="Maintenance">
+                    Maintenance
+                </option>
+
+            </select>
+
+
+            <div class="modal-actions">
+
+                <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelModal">
+                    Cancel
+                </button>
+
+                <button
+                        type="submit"
+                        class="save-button">
+                    Save Room
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- VIEW MODAL -->
+
+<div class="modal hidden" id="viewModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>
+                Room Details
+            </h2>
+
+            <button
+                    type="button"
+                    class="close-button"
+                    id="closeViewModal">
+                &times;
+            </button>
+
+        </div>
+
+
+        <div class="room-details">
+
+            <p>
+                <strong>Room ID:</strong>
+                <span id="viewRoomId"></span>
+            </p>
+
+            <p>
+                <strong>Room Number:</strong>
+                <span id="viewRoomNumber"></span>
+            </p>
+
+            <p>
+                <strong>Room Type:</strong>
+                <span id="viewRoomType"></span>
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <span id="viewRoomStatus"></span>
+            </p>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                    type="button"
+                    class="cancel-button"
+                    id="closeViewButton">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="js/room.js"></script>
+
+</body>
+
+</html>

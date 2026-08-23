@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCare - Admissions</title>
+
+    <link rel="stylesheet" href="css/addmission.css">
+</head>
+
+<body>
+
+<nav>
+
+    <div id="company-logo">
+        <span id="Smart">Smart </span>Care
+    </div>
+
+    <input
+            type="text"
+            placeholder="Search..."
+            id="search-bar"
+    >
+
+    <div id="nav-icons">
+
+        <div class="notifi-container">
+            <img src="/media/bell.png" alt="alert" class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <div class="notifi-container">
+            <img src="/media/email.png" alt="mail" class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <img src="/media/user.png" alt="user" id="user-login">
+
+    </div>
+
+</nav>
+
+
+<main>
+
+    <!-- Side Bar -->
+
+    <div id="side-bar" style="grid-area: side-bar;">
+
+        <div id="dassbar-cart"></div>
+        <div id="Today-apointment"></div>
+        <div id="Apointment-request"></div>
+        <div id="Patient-visit"></div>
+        <div id="Notification"></div>
+
+    </div>
+
+
+    <!-- Header -->
+
+    <div id="header-bar" style="grid-area: header-bar;">
+
+        <div class="header-container">
+
+            <div id="title-container">
+
+                <span id="title-bar"></span>
+
+                <span class="title">
+                    Admissions
+                </span>
+
+            </div>
+
+            <button
+                    class="add-button"
+                    id="add-admission-button">
+
+                + Add admission
+
+            </button>
+
+        </div>
+
+
+        <div class="search-container">
+
+            <input
+                    type="text"
+                    placeholder="Search by Patient ID..."
+                    class="search-icon"
+                    id="admission-search"
+            >
+
+
+            <select
+                    name="status"
+                    id="status"
+                    class="options">
+
+                <option value="all">
+                    Status
+                </option>
+
+                <option value="ADMITTED">
+                    Admitted
+                </option>
+
+                <option value="DISCHARGED">
+                    Discharged
+                </option>
+
+                <option value="TRANSFERRED">
+                    Transferred
+                </option>
+
+            </select>
+
+
+            <select
+                    name="room"
+                    id="room"
+                    class="options">
+
+                <option value="all">
+                    Room
+                </option>
+
+                <!-- Rooms can be loaded from backend -->
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- Admission Table -->
+
+    <div id="table-view" style="grid-area: table-view;">
+
+        <table id="admission-table">
+
+            <thead>
+
+            <tr>
+
+                <th>Admission ID</th>
+
+                <th>Patient ID</th>
+
+                <th>Doctor ID</th>
+
+                <th>Room ID</th>
+
+                <th>Admission Date</th>
+
+                <th>Status</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+            </thead>
+
+
+            <tbody id="admission-table-body">
+
+            <!-- JavaScript loads data -->
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+<!-- Add/Edit Admission Popup -->
+
+<div
+        id="admission-modal"
+        class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2 id="modal-title">
+                Add Admission
+            </h2>
+
+            <button
+                    class="close-button"
+                    id="close-modal">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="admission-form">
+
+            <input
+                    type="hidden"
+                    id="admission-id">
+
+
+            <label>
+                Patient ID
+            </label>
+
+            <input
+                    type="number"
+                    id="patient-id"
+                    placeholder="Enter patient ID"
+                    required>
+
+
+            <label>
+                Doctor ID
+            </label>
+
+            <input
+                    type="number"
+                    id="doctor-id"
+                    placeholder="Enter doctor ID"
+                    required>
+
+
+            <label>
+                Room ID
+            </label>
+
+            <input
+                    type="number"
+                    id="room-id"
+                    placeholder="Enter room ID"
+                    required>
+
+
+            <label>
+                Admission Date
+            </label>
+
+            <input
+                    type="date"
+                    id="admission-date"
+                    required>
+
+
+            <label>
+                Reason
+            </label>
+
+            <textarea
+                    id="reason"
+                    placeholder="Enter reason for admission"
+                    required></textarea>
+
+
+            <label>
+                Status
+            </label>
+
+            <select
+                    id="admission-status"
+                    required>
+
+                <option value="">
+                    Select status
+                </option>
+
+                <option value="ADMITTED">
+                    Admitted
+                </option>
+
+                <option value="DISCHARGED">
+                    Discharged
+                </option>
+
+                <option value="TRANSFERRED">
+                    Transferred
+                </option>
+
+            </select>
+
+
+            <div class="form-buttons">
+
+                <button
+                        type="submit"
+                        class="save-button">
+
+                    Save Admission
+
+                </button>
+
+                <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancel-button">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- Popup message -->
+
+<div id="popup-message"></div>
+
+
+<script src="js/addmission.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Care - Billing & Payment</title>
+    <link rel="stylesheet" href="css/billing.css">
+</head>
+
+<body>
+
+<nav>
+    <div id="company-logo">
+        <span id="Smart">Smart </span>Care
+    </div>
+
+    <input type="text" placeholder="Search..." id="search-bar">
+
+    <div id="nav-icons">
+        <div class="notifi-container">
+            <img src="/media/bell.png" alt="alert" class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <div class="notifi-container">
+            <img src="/media/email.png" alt="mail" class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <img src="/media/user.png" alt="user" id="user-login">
+    </div>
+</nav>
+
+<main>
+
+    <!-- Sidebar -->
+    <div id="side-bar">
+
+        <div class="side-menu">
+            <div>▦ <span>Dashboard</span></div>
+            <div>▣ <span>Appointments</span></div>
+            <div>♙ <span>Patients</span></div>
+            <div>♙ <span>Doctors</span></div>
+            <div>♧ <span>Staff</span></div>
+            <div>♧ <span>Treatment</span></div>
+            <div>▱ <span>Rooms</span></div>
+            <div>▣ <span>Admissions</span></div>
+            <div>♨ <span>Laboratory</span></div>
+            <div class="active">▤ <span>Billing & Payment</span></div>
+            <div>♜ <span>Departments</span></div>
+            <div>▧ <span>Reports</span></div>
+        </div>
+
+    </div>
+
+    <!-- Header -->
+    <div id="header-bar">
+
+        <div class="header-container">
+
+            <div id="title-container">
+                <span id="title-bar"></span>
+                <span class="title">Billing & Payment</span>
+            </div>
+
+            <button class="add-button" id="addBillBtn">
+                + Add Bill
+            </button>
+
+        </div>
+
+        <div class="search-container">
+
+            <input
+                    type="text"
+                    placeholder="Search Patient ID..."
+                    id="billSearch"
+            >
+
+            <select id="paymentStatusFilter" class="options">
+                <option value="">Payment Status</option>
+                <option value="Paid">Paid</option>
+                <option value="Pending">Pending</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+
+            <input
+                    type="date"
+                    id="dateFilter"
+                    class="date-option"
+            >
+
+            <button id="refreshBtn" class="refresh-button">
+                Refresh
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Table -->
+    <div id="table-view">
+
+        <div id="message"></div>
+
+        <table id="bill-table">
+
+            <thead>
+            <tr>
+                <th>Bill ID</th>
+                <th>Patient ID</th>
+                <th>Bill Date</th>
+                <th>Amount</th>
+                <th>Payment Method</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody id="bill-table-body">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+
+<!-- Add/Edit Bill Modal -->
+
+<div class="modal hidden" id="billModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Bill
+            </h2>
+
+            <button
+                    type="button"
+                    class="close-button"
+                    id="closeModal"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <form id="billForm">
+
+            <input
+                    type="hidden"
+                    id="billId"
+            >
+
+
+            <label>Patient ID</label>
+
+            <input
+                    type="number"
+                    id="patientId"
+                    min="1"
+                    required
+            >
+
+
+            <label>Bill Date</label>
+
+            <input
+                    type="date"
+                    id="billDate"
+                    required
+            >
+
+
+            <label>Amount</label>
+
+            <input
+                    type="number"
+                    id="amount"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                    required
+            >
+
+
+            <label>Payment Method</label>
+
+            <select id="paymentMethod" required>
+
+                <option value="">
+                    Select Payment Method
+                </option>
+
+                <option value="Cash">
+                    Cash
+                </option>
+
+                <option value="Card">
+                    Card
+                </option>
+
+                <option value="Bank Transfer">
+                    Bank Transfer
+                </option>
+
+                <option value="Online">
+                    Online
+                </option>
+
+            </select>
+
+
+            <label>Payment Status</label>
+
+            <select id="paymentStatus" required>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Paid">
+                    Paid
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <div class="modal-actions">
+
+                <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelModal"
+                >
+                    Cancel
+                </button>
+
+                <button
+                        type="submit"
+                        class="save-button"
+                >
+                    Save Bill
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- View Bill Modal -->
+
+<div class="modal hidden" id="viewBillModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>
+                Bill Details
+            </h2>
+
+            <button
+                    type="button"
+                    class="close-button"
+                    id="closeViewModal"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <div class="bill-details">
+
+            <p>
+                <strong>Bill ID:</strong>
+                <span id="viewBillId"></span>
+            </p>
+
+            <p>
+                <strong>Patient ID:</strong>
+                <span id="viewPatientId"></span>
+            </p>
+
+            <p>
+                <strong>Bill Date:</strong>
+                <span id="viewBillDate"></span>
+            </p>
+
+            <p>
+                <strong>Amount:</strong>
+                Rs. <span id="viewAmount"></span>
+            </p>
+
+            <p>
+                <strong>Payment Method:</strong>
+                <span id="viewPaymentMethod"></span>
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <span id="viewPaymentStatus"></span>
+            </p>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+                    type="button"
+                    class="cancel-button"
+                    id="closeViewButton"
+            >
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="js/billing.js"></script>
+
+</body>
+</html>

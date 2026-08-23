@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCare - Appointments</title>
+
+    <link rel="stylesheet" href="css/appointment.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div id="company-logo">
+        <span id="Smart">Smart </span>Care
+    </div>
+
+    <input
+            type="text"
+            placeholder="Search..."
+            id="search-bar"
+    >
+
+    <div id="nav-icons">
+
+        <div class="notifi-container">
+            <img src="media/bell.png"
+                 alt="Notifications"
+                 class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <div class="notifi-container">
+            <img src="media/email.png"
+                 alt="Messages"
+                 class="icons">
+            <span class="notifi">2</span>
+        </div>
+
+        <img src="media/user.png"
+             alt="User"
+             id="user-login">
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside id="side-bar">
+
+        <div class="sidebar-title">
+            SmartCare
+        </div>
+
+        <div class="side-menu">
+
+            <a href="dassboard.html" class="menu-item">
+                <img src="media/menu.png">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="appointment.html"
+               class="menu-item active">
+
+                <img src="media/online-booking.png">
+
+                <span>Appointments</span>
+
+            </a>
+
+            <a href="patient.html" class="menu-item">
+
+                <img src="media/patient.png">
+
+                <span>Patients</span>
+
+            </a>
+
+            <a href="doctor.html" class="menu-item">
+
+                <img src="media/doctor.png">
+
+                <span>Doctors</span>
+
+            </a>
+
+            <a href="treatment.html" class="menu-item">
+
+                <img src="media/stethoscope.png">
+
+                <span>Treatment</span>
+
+            </a>
+
+            <a href="room.html" class="menu-item">
+
+                <img src="media/inpatient.png">
+
+                <span>Rooms</span>
+
+            </a>
+
+            <a href="addmission.html" class="menu-item">
+
+                <img src="media/hospital.png">
+
+                <span>Admissions</span>
+
+            </a>
+
+            <a href="laboratory.html" class="menu-item">
+
+                <img src="media/microscope.png">
+
+                <span>Laboratory</span>
+
+            </a>
+
+            <a href="billing.html" class="menu-item">
+
+                <img src="media/transaction-history.png">
+
+                <span>Billing & Payment</span>
+
+            </a>
+
+            <a href="department.html" class="menu-item">
+
+                <img src="media/institution.png">
+
+                <span>Departments</span>
+
+            </a>
+
+            <a href="reports.html" class="menu-item">
+
+                <img src="media/medical-report.png">
+
+                <span>Reports</span>
+
+            </a>
+
+        </div>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="menu-item">
+
+                <span class="bottom-icon">⚙</span>
+
+                <span>Settings</span>
+
+            </a>
+
+            <a href="#" class="menu-item logout">
+
+                <span class="bottom-icon">↪</span>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= RIGHT CONTENT ================= -->
+
+    <section class="content">
+
+
+        <!-- HEADER -->
+
+        <div id="header-bar">
+
+            <div class="header-container">
+
+                <div id="title-container">
+
+                    <span id="title-bar"></span>
+
+                    <span class="title">
+                        Appointments
+                    </span>
+
+                </div>
+
+
+                <button
+                        class="add-button"
+                        id="addAppointmentBtn">
+
+                    + Add Appointment
+
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-container">
+
+                <input
+                        type="text"
+                        placeholder="Search Patient ID..."
+                        id="appointmentSearch"
+                >
+
+
+                <select
+                        id="statusFilter"
+                        class="options">
+
+                    <option value="">
+                        All Status
+                    </option>
+
+                    <option value="Scheduled">
+                        Scheduled
+                    </option>
+
+                    <option value="Completed">
+                        Completed
+                    </option>
+
+                    <option value="Cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+
+
+                <input
+                        type="date"
+                        id="dateFilter"
+                        class="date-option"
+                >
+
+
+                <button
+                        id="refreshBtn"
+                        class="refresh-button">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div id="table-view">
+
+            <div id="message"></div>
+
+            <div class="table-scroll">
+
+                <table id="appointment-table">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>Appointment ID</th>
+
+                        <th>Patient ID</th>
+
+                        <th>Doctor ID</th>
+
+                        <th>Date</th>
+
+                        <th>Time</th>
+
+                        <th>Room</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="appointment-table-body">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= MODAL ================= -->
+
+<div
+        class="modal hidden"
+        id="appointmentModal">
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Appointment
+            </h2>
+
+            <button
+                    type="button"
+                    class="close-button"
+                    id="closeModal">
+
+                &times;
+
+            </button>
+
+        </div>
+
+
+        <form id="appointmentForm">
+
+            <input
+                    type="hidden"
+                    id="appointmentId"
+            >
+
+
+            <!-- PATIENT -->
+
+            <label>
+                Patient ID
+            </label>
+
+            <input
+                    type="number"
+                    id="patientId"
+                    min="1"
+                    placeholder="Enter patient ID"
+                    required
+            >
+
+
+            <!-- DOCTOR -->
+
+            <label>
+                Doctor ID
+            </label>
+
+            <input
+                    type="number"
+                    id="doctorId"
+                    min="1"
+                    placeholder="Enter doctor ID"
+                    required
+            >
+
+
+            <!-- DATE -->
+
+            <label>
+                Appointment Date
+            </label>
+
+            <input
+                    type="date"
+                    id="appointmentDate"
+                    required
+            >
+
+
+            <!-- TIME -->
+
+            <label>
+                Appointment Time
+            </label>
+
+            <input
+                    type="time"
+                    id="appointmentTime"
+                    required
+            >
+
+
+            <!-- ROOM -->
+
+            <label>
+                Consultation Room
+            </label>
+
+            <input
+                    type="text"
+                    id="consultationRoom"
+                    placeholder="Example: 2308"
+                    required
+            >
+
+
+            <!-- STATUS -->
+
+            <label>
+                Status
+            </label>
+
+            <select
+                    id="appointmentStatus"
+                    required>
+
+                <option value="Scheduled">
+                    Scheduled
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <!-- BUTTONS -->
+
+            <div class="modal-actions">
+
+                <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelModal">
+
+                    Cancel
+
+                </button>
+
+                <button
+                        type="submit"
+                        class="save-button">
+
+                    Save Appointment
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= VIEW MODAL ================= -->
+
+<div
+        class="modal hidden"
+        id="viewModal">
+
+    <div class="modal-box view-box">
+
+        <div class="modal-header">
+
+            <h2>
+                Appointment Details
+            </h2>
+
+            <button
+                    class="close-button"
+                    onclick="closeViewModal()">
+
+                &times;
+
+            </button>
+
+        </div>
+
+
+        <div id="appointmentDetails">
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                    class="cancel-button"
+                    onclick="closeViewModal()">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="js/appointment.js"></script>
+
+</body>
+</html>
