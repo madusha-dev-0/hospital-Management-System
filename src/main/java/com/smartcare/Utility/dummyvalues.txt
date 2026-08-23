@@ -1,0 +1,115 @@
+INSERT INTO department
+(Department_Name, Location, HeadDoctor_ID)
+VALUES
+('Cardiology', 'Building A - Floor 1', NULL),
+('Neurology', 'Building A - Floor 2', NULL),
+('Pediatrics', 'Building B - Floor 1', NULL),
+('Orthopedics', 'Building B - Floor 2', NULL),
+('Radiology', 'Building C - Floor 1', NULL);
+
+INSERT INTO patient
+(Full_Name, Blood_Group, DOB, Gender, Address, Contact_Number, Emergency_Contact_Information)
+VALUES
+('Kamal Perera', 'A+', '1990-05-12', 'Male', 'Colombo', '0712345678', 'Nimal Perera - 0771234567'),
+('Nadeesha Silva', 'B+', '1995-08-21', 'Female', 'Kandy', '0723456789', 'Sunil Silva - 0782345678'),
+('Ravindu Fernando', 'O+', '1988-03-15', 'Male', 'Galle', '0763456789', 'Amal Fernando - 0773456789'),
+('Tharushi Kumar', 'AB+', '2001-11-02', 'Female', 'Jaffna', '0754567890', 'Kumar - 0774567890'),
+('Dinesh Raj', 'A-', '1979-07-19', 'Male', 'Negombo', '0775678901', 'Suresh Raj - 0715678901'),
+('Hiruni Perera', 'O-', '1998-01-25', 'Female', 'Colombo', '0786789012', 'Ruwan Perera - 0726789012'),
+('Arun Wijesinghe', 'B-', '1985-09-30', 'Male', 'Kurunegala', '0717890123', 'Sunil Wijesinghe - 0777890123'),
+('Sachini De Silva', 'A+', '1993-04-17', 'Female', 'Matara', '0728901234', 'Nimal De Silva - 0768901234'),
+('Praveen Kumar', 'O+', '2000-12-10', 'Male', 'Batticaloa', '0769012345', 'Ravi Kumar - 0759012345'),
+('Meena Rajan', 'AB-', '1992-06-28', 'Female', 'Vavuniya', '0750123456', 'Rajan - 0770123456');
+
+INSERT INTO doctor
+(Doctor_Name, Specialization, Qualification, Contact_Number, Consultation_Fee, Department_ID)
+VALUES
+('Dr. Anura Perera', 'Cardiologist', 'MBBS, MD Cardiology', '0711111111', 5000.00, 1),
+('Dr. Bhagya Silva', 'Neurologist', 'MBBS, MD Neurology', '0722222222', 5500.00, 2),
+('Dr. Chathuri Fernando', 'Pediatrician', 'MBBS, MD Pediatrics', '0733333333', 4000.00, 3),
+('Dr. Dilan Kumar', 'Orthopedic Surgeon', 'MBBS, MS Orthopedics', '0744444444', 6000.00, 4),
+('Dr. Eshan Raj', 'Radiologist', 'MBBS, MD Radiology', '0755555555', 4500.00, 5);
+
+INSERT INTO room
+(Room_Number, Room_Category, Room_Charge, Availability)
+VALUES
+('GW-101', 'General Ward', 5000.00, 'Available'),
+('GW-102', 'General Ward', 5000.00, 'Occupied'),
+('GW-103', 'General Ward', 5000.00, 'Available'),
+('GW-104', 'General Ward', 5000.00, 'Available'),
+('PR-201', 'Private Room', 10000.00, 'Occupied'),
+('PR-202', 'Private Room', 10000.00, 'Available'),
+('PR-203', 'Private Room', 10000.00, 'Available'),
+('ICU-301', 'ICU', 25000.00, 'Occupied'),
+('ICU-302', 'ICU', 25000.00, 'Available'),
+('ICU-303', 'ICU', 25000.00, 'Available');
+
+INSERT INTO appointment
+(Patient_ID, Doctor_ID, Appointment_Date, Appointment_Time, Appointment_Status, Consultation_Room)
+VALUES
+(1, 1, '2026-08-20', '09:00:00', 'Scheduled', 'Room 101'),
+(2, 1, '2026-08-20', '10:00:00', 'Completed', 'Room 101'),
+(3, 1, '2026-08-21', '09:30:00', 'Scheduled', 'Room 101'),
+
+(4, 2, '2026-08-20', '10:00:00', 'Completed', 'Room 201'),
+(5, 2, '2026-08-21', '11:00:00', 'Scheduled', 'Room 201'),
+(6, 2, '2026-08-22', '09:00:00', 'Scheduled', 'Room 201'),
+
+(7, 3, '2026-08-20', '09:00:00', 'Completed', 'Room 301'),
+(8, 3, '2026-08-21', '10:30:00', 'Scheduled', 'Room 301'),
+(9, 3, '2026-08-22', '11:30:00', 'Scheduled', 'Room 301'),
+
+(10, 4, '2026-08-20', '13:00:00', 'Completed', 'Room 401'),
+(1, 4, '2026-08-22', '14:00:00', 'Scheduled', 'Room 401'),
+(2, 4, '2026-08-23', '15:00:00', 'Scheduled', 'Room 401'),
+
+(3, 5, '2026-08-20', '14:00:00', 'Completed', 'Room 501'),
+(4, 5, '2026-08-21', '14:30:00', 'Scheduled', 'Room 501'),
+(5, 1, '2026-08-23', '10:00:00', 'Scheduled', 'Room 101');
+
+
+INSERT INTO admission
+(Patient_ID, Admission_Date, Discharge_Date, Room_ID, Bed_Number, Admission_Status)
+VALUES
+(1, '2026-08-15', '2026-08-18', 1, 'B01', 'Discharged'),
+(2, '2026-08-16', NULL, 5, 'B01', 'Admitted'),
+(3, '2026-08-17', '2026-08-19', 2, 'B02', 'Discharged'),
+(4, '2026-08-18', NULL, 8, 'ICU01', 'Admitted'),
+(5, '2026-08-18', NULL, 9, 'ICU02', 'Admitted');
+
+INSERT INTO doctor
+(Doctor_Name, Specialization, Qualification, Contact_Number, Consultation_Fee, Department_ID)
+VALUES
+('Dr. Anura Perera', 'Cardiologist', 'MBBS, MD Cardiology', '0711111111', 5000.00, 1),
+('Dr. Bhagya Silva', 'Neurologist', 'MBBS, MD Neurology', '0722222222', 5500.00, 2),
+('Dr. Chathuri Fernando', 'Pediatrician', 'MBBS, MD Pediatrics', '0733333333', 4000.00, 3),
+('Dr. Dilan Kumar', 'Orthopedic Surgeon', 'MBBS, MS Orthopedics', '0744444444', 6000.00, 4),
+('Dr. Eshan Raj', 'Radiologist', 'MBBS, MD Radiology', '0755555555', 4500.00, 5);
+
+INSERT INTO billing
+(Patient_ID, Bill_Date, TotalAmount, Payment_Status, Payment_Method)
+VALUES
+(1, '2026-08-15', 15000.00, 'Paid', 'Cash'),
+(2, '2026-08-16', 12000.00, 'Unpaid', NULL),
+(3, '2026-08-17', 18000.00, 'Paid', 'Card'),
+(4, '2026-08-18', 25000.00, 'Unpaid', NULL),
+(5, '2026-08-18', 30000.00, 'Paid', 'Card'),
+(6, '2026-08-19', 8000.00, 'Paid', 'Cash'),
+(7, '2026-08-19', 11000.00, 'Unpaid', NULL),
+(8, '2026-08-20', 20000.00, 'Paid', 'Online'),
+(9, '2026-08-20', 14000.00, 'Unpaid', NULL),
+(10, '2026-08-21', 16000.00, 'Paid', 'Cash');
+
+INSERT INTO treatment
+(Appointment_ID, Diagnosis, Prescription_Details, Treatment_Notes, Treatment_Date)
+VALUES
+(1, 'Chest Pain', 'Aspirin 75mg', 'Regular monitoring required', '2026-08-15'),
+(2, 'Fever', 'Paracetamol 500mg', 'Take after meals and rest', '2026-08-16'),
+(3, 'Headache', 'Paracetamol 500mg', 'Drink plenty of water', '2026-08-17'),
+(4, 'Diabetes', 'Metformin 500mg', 'Monitor blood sugar regularly', '2026-08-18'),
+(5, 'Hypertension', 'Amlodipine 5mg', 'Check blood pressure daily', '2026-08-18'),
+(6, 'Back Pain', 'Ibuprofen 400mg', 'Avoid heavy lifting', '2026-08-19'),
+(7, 'Asthma', 'Salbutamol Inhaler', 'Use inhaler when required', '2026-08-19'),
+(8, 'Gastritis', 'Omeprazole 20mg', 'Avoid spicy and oily food', '2026-08-20'),
+(9, 'Migraine', 'Sumatriptan 50mg', 'Rest in a quiet environment', '2026-08-20'),
+(10, 'Skin Allergy', 'Cetirizine 10mg', 'Avoid known allergens', '2026-08-20');
