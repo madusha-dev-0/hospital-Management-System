@@ -8,18 +8,20 @@ public class PatientEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Patient_ID;
+    @Column(name = "Patient_ID")
+    private Integer Patient_ID;
     private String Full_Name;
     private String Blood_Group;
     private String DOB;
     private String Gender;
+    @Column(name = "Address")
     private String Address;
     private String Contact_Number;
     private String Emergency_Contact_Information;
 
     public PatientEntity(){}
 
-    public PatientEntity(int Patient_ID,String Full_Name,String Blood_Group,
+    public PatientEntity(Integer Patient_ID,String Full_Name,String Blood_Group,
                          String DOB,String Gender,String Address,String Contact_Number,String Emergency_Contact_Information){
 
         this.setPatient_ID(Patient_ID);
@@ -33,11 +35,11 @@ public class PatientEntity {
     }
 
 
-    public int getPatient_ID() {
+    public Integer getPatient_ID() {
         return Patient_ID;
     }
 
-    public void setPatient_ID(int patient_ID) {
+    public void setPatient_ID(Integer patient_ID) {
         Patient_ID = patient_ID;
     }
 
