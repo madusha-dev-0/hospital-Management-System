@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "c1f2e3d4-5678-90ab-cdef-1234567890ab",
+		"name": "SmartCare - Doctor & Department Management",
+		"description": "Postman Collection for Doctor and Department Management REST APIs (CCS1303 Coursework Assignment)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Department Management",
+			"item": [
+				{
+					"name": "Create Department",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Department_Name\": \"Cardiology\",\n  \"Location\": \"Building A, Floor 3\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/departments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments"
+							]
+						},
+						"description": "Add a new department"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/departments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments"
+							]
+						},
+						"description": "Retrieve all departments"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Department by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/departments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"1"
+							]
+						},
+						"description": "Get details of department by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Department by Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/departments/search?name=Cardiology",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Cardiology"
+								}
+							]
+						},
+						"description": "Search department by name"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Department Details & Head Doctor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Department_Name\": \"Cardiology & Vascular\",\n  \"Location\": \"Building A, Floor 3\",\n  \"HeadDoctor_ID\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/departments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"1"
+							]
+						},
+						"description": "Update department details and assign head doctor"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Department",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/departments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"1"
+							]
+						},
+						"description": "Delete department by ID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doctor Management",
+			"item": [
+				{
+					"name": "Register Doctor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Doctor_Name\": \"Dr. John Smith\",\n  \"Specialization\": \"Cardiology\",\n  \"Qualification\": \"MBBS, MD\",\n  \"Contact_Number\": \"+1234567890\",\n  \"Consultation_Fee\": 150.00,\n  \"department\": {\n    \"Department_ID\": 1\n  }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/doctors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"doctors"
+							]
+						},
+						"description": "Register a new doctor assigned to a department"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Doctors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/doctors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"doctors"
+							]
+						},
+						"description": "Retrieve all registered doctors"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Doctor by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/doctors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"doctors",
+								"1"
+							]
+						},
+						"description": "Fetch doctor details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Doctors by Specialization",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/doctors/search?specialization=Cardiology",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"doctors",
+								"search"
+							],
+							"query": [
+								{
+									"key": "specialization",
+									"value": "Cardiology"
+								}
+							]
+						},
+						"description": "Search doctors by specialization"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Doctors by Department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/doctors/department/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"doctors",
+								"department",
+								"1"
+							]
+						},
+						"description": "List all doctors belonging to a specific department"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Doctor Details",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Doctor_Name\": \"Dr. John Smith\",\n  \"Specialization\": \"Interventional Cardiology\",\n  \"Qualification\": \"MBBS, MD, FACC\",\n  \"Contact_Number\": \"+1234567890\",\n  \"Consultation_Fee\": 200.00\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/doctors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"doctors",
+								"1"
+							]
+						},
+						"description": "Update doctor details"
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Doctor to Department",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/doctors/1/assign-department/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"doctors",
+								"1",
+								"assign-department",
+								"1"
+							]
+						},
+						"description": "Assign or reassign a doctor to a department"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Doctor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/doctors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"doctors",
+								"1"
+							]
+						},
+						"description": "Delete doctor record by ID"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
