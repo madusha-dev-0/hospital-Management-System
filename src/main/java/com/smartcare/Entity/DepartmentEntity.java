@@ -1,6 +1,7 @@
 package com.smartcare.Entity;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -26,6 +27,7 @@ public class DepartmentEntity {
     private String Location;
 
     @OneToMany(mappedBy = "department")
+    @JsonIgnore
     private List<DoctorEntity> doctor;
 
 

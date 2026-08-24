@@ -15,5 +15,5 @@ public interface DoctorRepository extends JpaRepository<DoctorEntity, Integer> {
     List<DoctorEntity> findBySpecializationContainingIgnoreCase(@Param("specialization") String specialization);
 
     @Query("SELECT d FROM DoctorEntity d WHERE d.department.Department_ID = :departmentID")
-    List<DoctorEntity> findByDepartmentId(@Param("departmentID") int departmentID);
+    List<DoctorEntity> findByDepartmentId(@Param("departmentID") Integer departmentID);
 }
