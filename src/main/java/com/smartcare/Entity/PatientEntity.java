@@ -1,6 +1,7 @@
 package com.smartcare.Entity;
 
 import jakarta.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "patient")
@@ -12,7 +13,7 @@ public class PatientEntity {
     private Integer Patient_ID;
     private String Full_Name;
     private String Blood_Group;
-    private String DOB;
+    private Date DOB;
     private String Gender;
     @Column(name = "Address")
     private String Address;
@@ -22,12 +23,12 @@ public class PatientEntity {
     public PatientEntity(){}
 
     public PatientEntity(Integer Patient_ID,String Full_Name,String Blood_Group,
-                         String DOB,String Gender,String Address,String Contact_Number,String Emergency_Contact_Information){
+                         Date DOB,String Gender,String Address,String Contact_Number,String Emergency_Contact_Information){
 
         this.setPatient_ID(Patient_ID);
         this.setFull_Name(Full_Name);
         this.setBlood_Group(Blood_Group);
-        this.setDOB(DOB);
+        this.DOB = DOB;
         this.setGender(Gender);
         this.setAddress(Address);
         this.setContact_Number(Contact_Number);
@@ -59,11 +60,11 @@ public class PatientEntity {
         Blood_Group = blood_Group;
     }
 
-    public String getDOB() {
+    public Date getDOB() {
         return DOB;
     }
 
-    public void setDOB(String DOB) {
+    public void setDOB(Date DOB) {
         this.DOB = DOB;
     }
 
